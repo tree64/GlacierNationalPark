@@ -1,9 +1,9 @@
 html {
-  background-color: #5998c9;
+  background-color: #1f3a93;
 }
 
 body {
-  background-color: #5998c9 !important;
+  background-color: #1f3a93 !important;
   content: center;
 }
 
@@ -17,7 +17,7 @@ html, body, .container-fluid, .row, .mapSection, #viewDiv {
 #viewDiv {
   border:1px solid;
   border-color: #0519ab;
-  background-color:#5998c9;
+  background-color:#1f3a93;
 }
 
 h1 {
@@ -27,7 +27,7 @@ h1 {
 }
 
 #header{
-  background-color: #5998c9;
+  background-color: #1f3a93;
   display: block;
   margin: 0 auto;
 }
