@@ -46,7 +46,7 @@ require([
    container: "viewDiv",
    map: map,
    center: [-88.15690516211465, 41.74779842602606], // longitude, latitude for Naperville 41.74779842602606, -88.15690516211465
-   zoom: 11
+   zoom: 17
   }
   );
 
