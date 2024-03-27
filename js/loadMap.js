@@ -32,7 +32,7 @@ require([
     
  ], function(esriConfig, Map, MapView, FeatureLayer, Search, QueryTask, Query, FeatureTable, LayerList, watchUtils, Expand,
   BasemapGallery, domConstruct, dom, on, watchUtils, Editor, CreateWorkflow, UpdateWorkflow, Locate, FeatureForm, FeatureTemplates, domClass,  Popup, PopupTemplate, Home, Legend) {
-
+    //need new esriconfig.apiKey
   esriConfig.apiKey = "AAPKbd17414641f84139af043c11b03c88eamFCGTb4e5J64QrVkSbvKl7lwiAeqhZTS3MXMKoL-UtLeZL2AnlCJ9rCoyIm-mC6y";
 
 
@@ -41,7 +41,7 @@ require([
    basemap: "dark-gray-vector"
   });
 
-  //creating map view
+  //creating map view, need to center on glacier national park
   const view = new MapView({
    container: "viewDiv",
    map: map,
@@ -59,6 +59,7 @@ require([
   
 
 //create incident icon
+//add new icons
 
 //create incident icon
 const addresspointsRenderer = {
@@ -71,7 +72,7 @@ const addresspointsRenderer = {
   }
 }
 
- // Define a pop-up for Address Points
+ // Define a pop-up for Address Points, don't need
  const popupAddresspoints = {
   "title": "<b>Full Address<b>",
   "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
@@ -79,7 +80,7 @@ const addresspointsRenderer = {
 
 
 
-  //address label feature layer (points)
+  //address label feature layer (points), don't need
   const addresspointsLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/9",
     renderer: addresspointsRenderer,
@@ -144,7 +145,7 @@ const addresspointsRenderer = {
       }
     ]
   };
-
+    //don't need and should convert for another layer. 
   const treesLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GEOG777PROJ2_Layers/FeatureServer/4",
     renderer: treesRenderer,
@@ -190,7 +191,7 @@ const addresspointsRenderer = {
   }
 */ 
   
-//adding icon types for incident features
+//adding icon types for incident features(convert for bear sightings, no need to have a severity)
 var incidentRenderer = {
   type: "unique-value",  // autocasts as new UniqueValueRenderer()
   legendOptions: {
@@ -323,7 +324,7 @@ const stormstructuresLayer = new FeatureLayer({
 
   map.add(stormstructuresLayer);
 
-  // Define a pop-up for subdivisions
+  // Define a pop-up for subdivisions(don't know if I need it, probably not)
   const popupSubdivisions = {
     title: "<b>{SUB_NAME}<br><b>Trees: {TREE_TOTAL} <b>Storm Drains:</b> {STORM_TOTAL}",
     content: [{
@@ -425,7 +426,7 @@ const stormstructuresLayer = new FeatureLayer({
   });
 */
   
-//create editor panel
+//create editor panel (this is where you add the various layers that you will display)
   const editor = new Editor({
     view: view,
     label: "Incident",
