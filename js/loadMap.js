@@ -33,8 +33,8 @@ require([
  ], function(esriConfig, Map, MapView, FeatureLayer, Search, QueryTask, Query, FeatureTable, LayerList, watchUtils, Expand,
   BasemapGallery, domConstruct, dom, on, watchUtils, Editor, CreateWorkflow, UpdateWorkflow, Locate, FeatureForm, FeatureTemplates, domClass,  Popup, PopupTemplate, Home, Legend) {
     //need new esriconfig.apiKey
-  esriConfig.apiKey = "AAPKbd17414641f84139af043c11b03c88eamFCGTb4e5J64QrVkSbvKl7lwiAeqhZTS3MXMKoL-UtLeZL2AnlCJ9rCoyIm-mC6y";
-
+  //esriConfig.apiKey = "AAPKbd17414641f84139af043c11b03c88eamFCGTb4e5J64QrVkSbvKl7lwiAeqhZTS3MXMKoL-UtLeZL2AnlCJ9rCoyIm-mC6y";
+  esriConfig.apiKey = "AAPK485bd483be544e7a81f95ec44c935768P1KiKSLDlVqfdCUccKq13y4MXw2VF57BG-nUpacjvrgCpyzLkAap4Fbg8b-QH9hI";
 
   //creating base map
   const map = new Map({
@@ -45,7 +45,7 @@ require([
   const view = new MapView({
    container: "viewDiv",
    map: map,
-   center: [-88.15690516211465, 41.74779842602606], // longitude, latitude for Naperville 41.74779842602606, -88.15690516211465
+   center: [113.8061405°W, 48.6836922°N], // longitude and latitude for Glacier National Park, 113.8061405°W 48.6836922°N longitude, latitude for Naperville 41.74779842602606, -88.15690516211465
    zoom: 17
   }
   );
