@@ -38,7 +38,7 @@ require([
 
   //creating base map
   const map = new Map({
-   basemap: "dark-gray-vector"
+   basemap: "Topographic" //basemap: "dark-gray-vector"
   });
 
   //creating map view, need to center on glacier national park
