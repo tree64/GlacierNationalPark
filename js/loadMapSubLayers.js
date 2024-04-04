@@ -97,7 +97,7 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], functio
   var view = new MapView({
       container: "viewDiv",
       map: map,
-      center: [-88.16719778104223, 41.740399844246234], // longitude, latitude, 
+      center: [113.8061405°W, 48.6836922°N], //center: [-88.16719778104223, 41.740399844246234], // longitude, latitude, 
       zoom: 7
   });
 
