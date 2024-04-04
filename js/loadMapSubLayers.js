@@ -90,7 +90,7 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], functio
 
   //add layers to map
   var map = new Map({
-      basemap: "topo-vector",
+      basemap: "Topographic", //basemap: "topo-vector",
       layers: [layer]
   });
 
