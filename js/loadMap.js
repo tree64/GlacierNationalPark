@@ -116,7 +116,38 @@ require([
 
  // map.add(addresspointsLayer);
 
-  
+ //create TrailHeads Icon
+    const trailHeadsRenderer = {
+     "type": "simple",
+     "symbol": {
+     "type": "picture-marker",
+     "url": "img/rectangle_addresses.png", //need a new url
+     "width": "24px",
+     "height": "24px"   
+    
+//Define a pop-up for Trail Heads
+    const popupTrailHeads = {
+     "title": "<b>Trail Heads<b>",
+     "content": "{POINAME}<br><b></b> {POITYPE}, {UNITNAME}"
+}    
+         
+// Define a pop-up for Address Points, don't need
+//  const popupAddresspoints = {
+//   "title": "<b>Full Address<b>",
+//   "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
+// }
+
+//Trail Heads feature layer (points), 
+  const trailHeadsLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_TrailHeads/FeatureServer",
+    renderer: trailHeadsRenderer,
+    outFields: ["POINAME","POITYPE","UNITNAME"],
+    popupTemplate: popupTrailHeads
+  });
+
+
+
+  map.add(trailHeadsLayer);
 
  //adding icon types for stormwater features
 
