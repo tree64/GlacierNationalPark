@@ -62,35 +62,59 @@ require([
 //add new icons
 
 //create incident icon
-const addresspointsRenderer = {
-  "type": "simple",
-  "symbol": {
-    "type": "picture-marker",
-    "url": "img/rectangle_addresses.png",
-    "width": "24px",
-    "height": "24px"
-  }
-}
+// const addresspointsRenderer = {
+//   "type": "simple",
+//   "symbol": {
+//     "type": "picture-marker",
+//     "url": "img/rectangle_addresses.png",
+//     "width": "24px",
+//     "height": "24px"
+//   }
+// }
+    //create Bear Report Icon
+    const bearreportRenderer = {
+     "type": "simple",
+     "symbol": {
+     "type": "picture-marker",
+     "url": "img/rectangle_addresses.png", //need a new url
+     "width": "24px",
+     "height": "24px"   
+    
+//Define a pop-up for Bear Reports
+    const popupBearReport = {
+     "title": "<b>Bear Report<b>",
+     "content": "{Report Type}<br><b></b> {Kind}, {Date} {Time}"
+}    
+         
+// Define a pop-up for Address Points, don't need
+//  const popupAddresspoints = {
+//   "title": "<b>Full Address<b>",
+//   "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
+// }
 
- // Define a pop-up for Address Points, don't need
- const popupAddresspoints = {
-  "title": "<b>Full Address<b>",
-  "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
-}
-
-
-
-  //address label feature layer (points), don't need
-  const addresspointsLayer = new FeatureLayer({
-    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/9",
-    renderer: addresspointsRenderer,
-    outFields: ["FULL_ADDRE","CITY","STATE","ZIP"],
-    popupTemplate: popupAddresspoints
+//address label feature layer (points), don't need
+  const bearReportLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Bear_Encounters/FeatureServer",
+    renderer: bearreportRenderer,
+    outFields: ["ReportType","Kind","Date","Time"],
+    popupTemplate: popupBearReport
   });
 
 
 
-  map.add(addresspointsLayer);
+  map.add(bearReportLayer);
+
+  //address label feature layer (points), don't need
+  // const addresspointsLayer = new FeatureLayer({
+  //   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/9",
+  //   renderer: addresspointsRenderer,
+  //   outFields: ["FULL_ADDRE","CITY","STATE","ZIP"],
+  //   popupTemplate: popupAddresspoints
+  // });
+
+
+
+ // map.add(addresspointsLayer);
 
   
 
