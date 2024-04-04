@@ -47,7 +47,7 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], functio
       }],
   };
   */
-
+  // change the url or remove.
   // This layer has four sublayers. You can define the visibility of these layers in the
   // sublayers property.
   var layer = new MapImageLayer({
