@@ -164,6 +164,58 @@ require([
   }
 };
 
+ //create National Park Trails Icon
+    const trailsRenderer = {
+     "type": "simple",
+     "symbol": {
+     "type": "picture-marker",
+     "url": "img/rectangle_addresses.png", //need a new url
+     "width": "24px",
+     "height": "24px"   
+    
+//Define a pop-up for Trail Heads
+    const popupTrails = {
+     "title": "<b>Trails <b>",
+     "content": "{NAME}<br><b></b> {DESC_SEG}, {TRAILROUTE}, {Miles}"
+}    
+         
+// Define a pop-up for Address Points, don't need
+//  const popupAddresspoints = {
+//   "title": "<b>Full Address<b>",
+//   "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
+// }
+
+//Trail Heads feature layer (points), 
+  const trailsLayer = new FeatureLayer({
+    url: "https://services2.arcgis.com/DRQySz3VhPgOv7Bo/arcgis/rest/services/Glacier_National_Park_Trails/FeatureServer",
+    renderer: trailsRenderer,
+    outFields: ["NAME","DESC_SEG","TRAILROUTE", "Miles"],
+    popupTemplate: popupTrails
+  });
+
+
+  map.add(trailsLayer);
+
+ //adding icon types for stormwater features
+
+ const defaultSym = {
+  type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+  color: [0, 0, 0, 0],
+  
+  
+  
+  outline: {
+    // autocasts as new SimpleLineSymbol()
+    color: "#71de6e", // need a new color, and keep it as a line sements.
+    width: 1
+  }
+};
+
+
+
+
+
+    
   const treesRenderer = {
     type: "simple", // autocasts as new SimpleRenderer()
     symbol: defaultSym,
