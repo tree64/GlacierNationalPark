@@ -211,7 +211,53 @@ require([
   }
 };
 
+ //create ViewPoints Icon
+    const viewPointsRenderer = {
+     "type": "simple",
+     "symbol": {
+     "type": "picture-marker",
+     "url": "img/rectangle_addresses.png", //need a new url
+     "width": "24px",
+     "height": "24px"   
+    
+//Define a pop-up for Trail Heads
+    const popupViewPoints = {
+     "title": "<b>Trail Heads<b>",
+     "content": "{POINAME}<br><b></b> {NOTES}"
+}    
+         
+// Define a pop-up for Address Points, don't need
+//  const popupAddresspoints = {
+//   "title": "<b>Full Address<b>",
+//   "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
+// }
 
+//Trail Heads feature layer (points), 
+  const viewPointsLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_ViewPoints/FeatureServer",
+    renderer: viewPointsRenderer,
+    outFields: ["POINAME","NOTES"],
+    popupTemplate: popupViewPoints
+  });
+
+
+
+  map.add(viewPointsLayer);
+
+ //adding icon types for stormwater features
+
+ const defaultSym = {
+  type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+  color: [0, 0, 0, 0],
+  
+  
+  
+  outline: {
+    // autocasts as new SimpleLineSymbol()
+    color: "#71de6e",
+    width: 1
+  }
+};
 
 
 
