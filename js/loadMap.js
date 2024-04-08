@@ -209,7 +209,7 @@ require([
 
 
     //create Ranger Station Icon
-  const RangerStataionRenderer = {
+  const RangerStationRenderer = {
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
