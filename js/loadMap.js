@@ -82,7 +82,7 @@ require([
     
 //Define a pop-up for Bear Reports
     const popupBearReport = {
-     "title": "<b>Bear Report<b>",
+     "title": "<b>Bear Reports<b>",
      "content": "{Report Type}<br><b></b> {Kind}, {Date} {Time}"
 }    
          
@@ -168,7 +168,7 @@ require([
 //Define a pop-up for Restrooms
     const popupRestrooms = {
      "title": "<b>RestRooms <b>",
-     "content": "{NAME}<br><b></b> {DESC_SEG}, {TRAILROUTE}, {Miles}"
+     "content": "{POINAME}<br><b></b> {NOTES}"
 }    
          
 //Trail Heads feature layer (points), 
@@ -220,10 +220,10 @@ require([
 //Define a pop-up for Ranger Station
     const popupRangerStation = {
      "title": "<b>Ranger Stations<b>",
-     "content": "{POINAME}<br><b></b> {NOTES}"
+     "content": "{POINAME}<br><b></b> {POITYPE}"
 }    
 
-//View Points feature layer (points), 
+//Ranger Stations feature layer (points), 
   const RangerStationLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_RangerStation/FeatureServer",
     renderer: RangerStationRenderer,
@@ -233,6 +233,34 @@ require([
 
   map.add(RangerStationLayer);
 
+ //create Picnic Areas Icon
+    const pinicAreasRenderer = {
+     "type": "simple",
+     "symbol": {
+     "type": "picture-marker",
+     "url": "img/rectangle_addresses.png", //need a new url
+     "width": "24px",
+     "height": "24px"   
+    
+//Define a pop-up for Picnic Areas
+    const picnicAreasPoints = {
+     "title": "<b>Picnic Areas<b>",
+     "content": "{POINAME}<br><b></b> {POITYPE}"
+}    
+
+//Picnic Areas feature layer (points), 
+  const PicnicAreasLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_PicnicArea/FeatureServer",
+    renderer: picnicAreasRenderer,
+    outFields: ["POINAME","POITYPE"],
+    popupTemplate: popuppicnicAreas
+  });
+
+  map.add(PinicAreasLayer);
+
+
+
+    
     
   // Define a pop-up for Trails
   const popupTrails = {
