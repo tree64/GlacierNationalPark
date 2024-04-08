@@ -130,12 +130,7 @@ require([
      "title": "<b>Trail Heads<b>",
      "content": "{POINAME}<br><b></b> {POITYPE}, {UNITNAME}"
 }    
-         
-// Define a pop-up for Address Points, don't need
-//  const popupAddresspoints = {
-//   "title": "<b>Full Address<b>",
-//   "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
-// }
+    
 
 //Trail Heads feature layer (points), 
   const trailHeadsLayer = new FeatureLayer({
@@ -144,25 +139,22 @@ require([
     outFields: ["POINAME","POITYPE","UNITNAME"],
     popupTemplate: popupTrailHeads
   });
-
-
-
-  map.add(trailHeadsLayer);
-
- //adding icon types for stormwater features
-
- const defaultSym = {
-  type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-  color: [0, 0, 0, 0],
   
+    map.add(trailHeadsLayer);
+
+    
+ //adding icon types for stormwater features (I don't know if I need this)
+
+//  const defaultSym = {
+//   type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+//   color: [0, 0, 0, 0],
   
-  
-  outline: {
-    // autocasts as new SimpleLineSymbol()
-    color: "#71de6e",
-    width: 1
-  }
-};
+//   outline: {
+//     // autocasts as new SimpleLineSymbol()
+//     color: "#71de6e",
+//     width: 1
+//   }
+// };
 
  //create Restrooms Icon
     const RestroomsRenderer = {
@@ -179,12 +171,6 @@ require([
      "content": "{NAME}<br><b></b> {DESC_SEG}, {TRAILROUTE}, {Miles}"
 }    
          
-// Define a pop-up for Address Points, don't need
-//  const popupAddresspoints = {
-//   "title": "<b>Full Address<b>",
-//   "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
-// }
-
 //Trail Heads feature layer (points), 
   const RestRoomsLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_Restrooms/FeatureServer",
@@ -196,21 +182,6 @@ require([
 
   map.add(RestroomsLayer);
 
- //adding icon types for stormwater features
-
- const defaultSym = {
-  type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-  color: [0, 0, 0, 0],
-  
-  
-  
-  outline: {
-    // autocasts as new SimpleLineSymbol()
-    color: "#71de6e", // need a new color, and keep it as a line sements.
-    width: 1
-  }
-};
-
  //create ViewPoints Icon
     const viewPointsRenderer = {
      "type": "simple",
@@ -220,19 +191,13 @@ require([
      "width": "24px",
      "height": "24px"   
     
-//Define a pop-up for Trail Heads
+//Define a pop-up for View Points
     const popupViewPoints = {
-     "title": "<b>Trail Heads<b>",
+     "title": "<b>View Points<b>",
      "content": "{POINAME}<br><b></b> {NOTES}"
 }    
-         
-// Define a pop-up for Address Points, don't need
-//  const popupAddresspoints = {
-//   "title": "<b>Full Address<b>",
-//   "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
-// }
 
-//Trail Heads feature layer (points), 
+//View Points feature layer (points), 
   const viewPointsLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_ViewPoints/FeatureServer",
     renderer: viewPointsRenderer,
@@ -240,13 +205,11 @@ require([
     popupTemplate: popupViewPoints
   });
 
-
-
   map.add(viewPointsLayer);
 
 
   // Define a pop-up for Trails
-  const popupSubdivisions = {
+  const popupTrails = {
     title: "<b>{SUB_NAME}<br><b>Trees: {TREE_TOTAL} <b>Storm Drains:</b> {STORM_TOTAL}",
     content: [{
       type: "media",
@@ -264,15 +227,7 @@ require([
      }]
    }
 
-   view.popup.dockEnabled = true
-   view.popup.collapseEnabled = false
-   view.popup.dockOptions = {
-    breakpoint: false,
-    buttonEnabled: true,
-    position: 'bottom-right'
-  }
-
-  const subdivisionsRenderer = {
+  const TrailsRenderer = {
     type: "simple",
     symbol: {
       type: "simple-fill",
@@ -285,33 +240,18 @@ require([
     }
   };
 
-  //school district feature layer (polygons)
-  const subdivisionsLayer = new FeatureLayer({
-    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
-    renderer: subdivisionsRenderer,
+  //Adding Trails feature layer (polygons)
+  const TrailsLayer = new FeatureLayer({
+    url: "https://services2.arcgis.com/DRQySz3VhPgOv7Bo/arcgis/rest/services/Glacier_National_Park_Trails/FeatureServer",
+    renderer: TrailsRenderer,
     opacity: 0.2,
-    outFields: ["SUB_NAME","TREE_TOTAL","STORM_TOTAL"],
-    popupTemplate: popupSubdivisions
+    outFields: ["NAME","AREA","Miles", "DESC_SEG", "TRAILROUTE"],
+    popupTemplate: popupTrails
   });
 
-  map.add(subdivisionsLayer, 0);   
+  map.add(TrailsLayer, 0);   
     
     
-    //adding icon types for stormwater features
-
- const defaultSym = {
-  type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-  color: [0, 0, 0, 0],
-  
-  
-  
-  outline: {
-    // autocasts as new SimpleLineSymbol()
-    color: "#71de6e",
-    width: 1
-  }
-};
-
 
 
     
