@@ -258,7 +258,30 @@ require([
 
   map.add(PinicAreasLayer);
 
+  //create Parking Icon
+    const parkingRenderer = {
+     "type": "simple",
+     "symbol": {
+     "type": "picture-marker",
+     "url": "img/rectangle_addresses.png", //need a new url
+     "width": "24px",
+     "height": "24px"   
+    
+//Define a pop-up for Parking
+    const popupParking = {
+     "title": "<b>Parking Lots<b>",
+     "content": "{POINAME}<br><b></b> {POITYPE}, {NOTES}"
+}    
 
+//Parking Lots feature layer (points), 
+  const ParkingLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_Parking/FeatureServer",
+    renderer: parkingRenderer,
+    outFields: ["POINAME","POITYPE", "NOTES"],
+    popupTemplate: popupParking
+  });
+
+  map.add(ParkingLayer);
 
     
     
