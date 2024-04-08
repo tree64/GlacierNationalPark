@@ -121,7 +121,7 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/trailhead_2.png", //need a new url
+     "url": "img/trailhead_2.png", 
      "width": "24px",
      "height": "24px"   
     
@@ -161,13 +161,13 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/restrooms.jpg", //need a new url
+     "url": "img/restrooms.jpg",
      "width": "24px",
      "height": "24px"   
     
 //Define a pop-up for Restrooms
  const popupRestrooms = {
-     "title": "<b>RestRooms <b>",
+     "title": "<b>RestRooms<b>",
      "content": "{POINAME}<br><b></b> {NOTES}"
 }    
          
@@ -213,7 +213,7 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/rangerStation.gif", //need a new url
+     "url": "img/rangerStation.gif",   
      "width": "24px",
      "height": "24px"   
     
