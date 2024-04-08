@@ -72,7 +72,7 @@ require([
 //   }
 // }
     //create Bear Report Icon
-    const bearreportRenderer = {
+ const bearreportRenderer = {
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
@@ -81,7 +81,7 @@ require([
      "height": "24px"   
     
 //Define a pop-up for Bear Reports
-    const popupBearReport = {
+ const popupBearReport = {
      "title": "<b>Bear Reports<b>",
      "content": "{Report Type}<br><b></b> {Kind}, {Date} {Time}"
 }    
@@ -117,7 +117,7 @@ require([
  // map.add(addresspointsLayer);
 
  //create TrailHeads Icon
-    const trailHeadsRenderer = {
+  const trailHeadsRenderer = {
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
@@ -126,7 +126,7 @@ require([
      "height": "24px"   
     
 //Define a pop-up for Trail Heads
-    const popupTrailHeads = {
+  const popupTrailHeads = {
      "title": "<b>Trail Heads<b>",
      "content": "{POINAME}<br><b></b> {POITYPE}, {UNITNAME}"
 }    
@@ -157,7 +157,7 @@ require([
 // };
 
  //create Restrooms Icon
-    const RestroomsRenderer = {
+ const RestroomsRenderer = {
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
@@ -166,24 +166,24 @@ require([
      "height": "24px"   
     
 //Define a pop-up for Restrooms
-    const popupRestrooms = {
+ const popupRestrooms = {
      "title": "<b>RestRooms <b>",
      "content": "{POINAME}<br><b></b> {NOTES}"
 }    
          
 //Trail Heads feature layer (points), 
-  const RestRoomsLayer = new FeatureLayer({
+ const RestRoomsLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_Restrooms/FeatureServer",
     renderer: RestroomsRenderer,
     outFields: ["POINAME","NOTES"],
     popupTemplate: popupRestrooms
   });
-
+ 
 
   map.add(RestroomsLayer);
 
  //create ViewPoints Icon
-    const viewPointsRenderer = {
+ const viewPointsRenderer = {
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
@@ -192,7 +192,7 @@ require([
      "height": "24px"   
     
 //Define a pop-up for View Points
-    const popupViewPoints = {
+ const popupViewPoints = {
      "title": "<b>View Points<b>",
      "content": "{POINAME}<br><b></b> {NOTES}"
 }    
@@ -209,7 +209,7 @@ require([
 
 
     //create Ranger Station Icon
-    const RangerStataionRenderer = {
+  const RangerStataionRenderer = {
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
@@ -224,7 +224,7 @@ require([
 }    
 
 //Ranger Stations feature layer (points), 
-  const RangerStationLayer = new FeatureLayer({
+    const RangerStationLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_RangerStation/FeatureServer",
     renderer: RangerStationRenderer,
     outFields: ["POINAME","POITYPE"],
@@ -249,7 +249,7 @@ require([
 }    
 
 //Picnic Areas feature layer (points), 
-  const PicnicAreasLayer = new FeatureLayer({
+    const PicnicAreasLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_PicnicArea/FeatureServer",
     renderer: picnicAreasRenderer,
     outFields: ["POINAME","POITYPE"],
@@ -274,7 +274,7 @@ require([
 }    
 
 //Parking Lots feature layer (points), 
-  const ParkingLayer = new FeatureLayer({
+    const ParkingLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_Parking/FeatureServer",
     renderer: parkingRenderer,
     outFields: ["POINAME","POITYPE", "NOTES"],
@@ -299,7 +299,7 @@ require([
 }    
 
 //Campgrounds feature layer (points), 
-  const CampgroundsLayer = new FeatureLayer({
+    const CampgroundsLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_Campgrounds/FeatureServer",
     renderer: CampgroundsRenderer,
     outFields: ["POINAME","POITYPE", "NOTES'],
@@ -312,12 +312,12 @@ require([
     
     
   // Define a pop-up for Trails
-  const popupTrails = {
+   const popupTrails = {
     "title": "<b>Trails</b>",
     "content": "{NAME} <br><b><b>,{AREA},{Miles}, {DESC_SEG}, {TRAILROUTE}"
    }
 
-  const TrailsRenderer = {
+   const TrailsRenderer = {
     type: "simple",
     symbol: {
       type: "simple-fill",
