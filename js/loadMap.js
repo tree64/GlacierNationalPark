@@ -164,8 +164,8 @@ require([
   }
 };
 
- //create National Park Trails Icon
-    const trailsRenderer = {
+ //create Restrooms Icon
+    const RestroomsRenderer = {
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
@@ -173,8 +173,8 @@ require([
      "width": "24px",
      "height": "24px"   
     
-//Define a pop-up for Trail Heads
-    const popupTrails = {
+//Define a pop-up for Restrooms
+    const popupRestrooms = {
      "title": "<b>Trails <b>",
      "content": "{NAME}<br><b></b> {DESC_SEG}, {TRAILROUTE}, {Miles}"
 }    
@@ -186,15 +186,15 @@ require([
 // }
 
 //Trail Heads feature layer (points), 
-  const trailsLayer = new FeatureLayer({
-    url: "https://services2.arcgis.com/DRQySz3VhPgOv7Bo/arcgis/rest/services/Glacier_National_Park_Trails/FeatureServer",
-    renderer: trailsRenderer,
-    outFields: ["NAME","DESC_SEG","TRAILROUTE", "Miles"],
-    popupTemplate: popupTrails
+  const RestRoomsLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_Restrooms/FeatureServer",
+    renderer: RestroomsRenderer,
+    outFields: ["POINAME","NOTES"],
+    popupTemplate: popupRestrooms
   });
 
 
-  map.add(trailsLayer);
+  map.add(RestroomsLayer);
 
  //adding icon types for stormwater features
 
@@ -244,7 +244,60 @@ require([
 
   map.add(viewPointsLayer);
 
- //adding icon types for stormwater features
+
+  // Define a pop-up for Trails
+  const popupSubdivisions = {
+    title: "<b>{SUB_NAME}<br><b>Trees: {TREE_TOTAL} <b>Storm Drains:</b> {STORM_TOTAL}",
+    content: [{
+      type: "media",
+       mediaInfos: [{
+        type: "pie-chart", //delete this line to remove pie chart
+         size: 6, //delete this line to remove pie chart
+         
+
+         caption: "Ratio of Tree to Storm Drains: {TREE_TOTAL}:{STORM_TOTAL}", //delete this line to remove pie chart
+         value: {
+           fields: [ "TREE_TOTAL","STORM_TOTAL" ],
+           normalizeField: null,
+           }
+         }]
+     }]
+   }
+
+   view.popup.dockEnabled = true
+   view.popup.collapseEnabled = false
+   view.popup.dockOptions = {
+    breakpoint: false,
+    buttonEnabled: true,
+    position: 'bottom-right'
+  }
+
+  const subdivisionsRenderer = {
+    type: "simple",
+    symbol: {
+      type: "simple-fill",
+      size: 6,
+      color: "#71de6e",
+      outline: {
+        color: [128, 128, 128, 0.5],
+        width: "0.5px"
+      }
+    }
+  };
+
+  //school district feature layer (polygons)
+  const subdivisionsLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
+    renderer: subdivisionsRenderer,
+    opacity: 0.2,
+    outFields: ["SUB_NAME","TREE_TOTAL","STORM_TOTAL"],
+    popupTemplate: popupSubdivisions
+  });
+
+  map.add(subdivisionsLayer, 0);   
+    
+    
+    //adding icon types for stormwater features
 
  const defaultSym = {
   type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
