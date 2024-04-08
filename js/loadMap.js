@@ -167,7 +167,7 @@ require([
     
 //Define a pop-up for Restrooms
     const popupRestrooms = {
-     "title": "<b>Trails <b>",
+     "title": "<b>RestRooms <b>",
      "content": "{NAME}<br><b></b> {DESC_SEG}, {TRAILROUTE}, {Miles}"
 }    
          
@@ -200,7 +200,7 @@ require([
 //View Points feature layer (points), 
   const viewPointsLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_ViewPoints/FeatureServer",
-    renderer: viewPointsRenderer,
+    renderer: ViewPointsRenderer,
     outFields: ["POINAME","NOTES"],
     popupTemplate: popupViewPoints
   });
@@ -208,6 +208,32 @@ require([
   map.add(viewPointsLayer);
 
 
+    //create Ranger Station Icon
+    const RangerStataionRenderer = {
+     "type": "simple",
+     "symbol": {
+     "type": "picture-marker",
+     "url": "img/rectangle_addresses.png", //need a new url
+     "width": "24px",
+     "height": "24px"   
+    
+//Define a pop-up for Ranger Station
+    const popupRangerStation = {
+     "title": "<b>Ranger Stations<b>",
+     "content": "{POINAME}<br><b></b> {NOTES}"
+}    
+
+//View Points feature layer (points), 
+  const RangerStationLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_RangerStation/FeatureServer",
+    renderer: RangerStationRenderer,
+    outFields: ["POINAME","POITYPE"],
+    popupTemplate: popupRangerStation
+  });
+
+  map.add(RangerStationLayer);
+
+    
   // Define a pop-up for Trails
   const popupTrails = {
     title: "<b>{SUB_NAME}<br><b>Trees: {TREE_TOTAL} <b>Storm Drains:</b> {STORM_TOTAL}",
