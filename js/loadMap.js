@@ -76,7 +76,7 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/rectangle_addresses.png", //need a new url
+     "url": "img/bear_2.jpg", //need a new url
      "width": "24px",
      "height": "24px"   
     
@@ -121,7 +121,7 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/rectangle_addresses.png", //need a new url
+     "url": "img/trailhead_2.png", //need a new url
      "width": "24px",
      "height": "24px"   
     
@@ -161,7 +161,7 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/rectangle_addresses.png", //need a new url
+     "url": "img/restrooms.jpg", //need a new url
      "width": "24px",
      "height": "24px"   
     
@@ -187,7 +187,7 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/rectangle_addresses.png", //need a new url
+     "url": "img/viewpoint.jpg", //need a new url
      "width": "24px",
      "height": "24px"   
     
@@ -213,7 +213,7 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/rectangle_addresses.png", //need a new url
+     "url": "img/rangerStation.gif", //need a new url
      "width": "24px",
      "height": "24px"   
     
@@ -238,7 +238,7 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/rectangle_addresses.png", //need a new url
+     "url": "img/picnicarea.jpg", //need a new url
      "width": "24px",
      "height": "24px"   
     
@@ -288,7 +288,7 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/rectangle_addresses.png", //need a new url
+     "url": "img/campsite.jpg", //need a new url
      "width": "24px",
      "height": "24px"   
     
@@ -298,7 +298,7 @@ require([
      "content": "{POINAME}<br><b></b> {POITYPE}, {NOTES}"
 }    
 
-//Ranger Stations feature layer (points), 
+//Campgrounds feature layer (points), 
   const CampgroundsLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_Campgrounds/FeatureServer",
     renderer: CampgroundsRenderer,
