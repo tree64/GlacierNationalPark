@@ -180,7 +180,7 @@ require([
   });
  
 
-  map.add(RestroomsLayer);
+  map.add(RestRoomsLayer);
 
  //create ViewPoints Icon
  const viewPointsRenderer = {
@@ -200,7 +200,7 @@ require([
 //View Points feature layer (points), 
   const viewPointsLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_ViewPoints/FeatureServer",
-    renderer: ViewPointsRenderer,
+    renderer: viewPointsRenderer,
     outFields: ["POINAME","NOTES"],
     popupTemplate: popupViewPoints
   });
@@ -234,7 +234,7 @@ require([
   map.add(RangerStationLayer);
 
  //create Picnic Areas Icon
-    const pinicAreasRenderer = {
+    const picnicAreasRenderer = {
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
@@ -243,7 +243,7 @@ require([
      "height": "24px"   
     
 //Define a pop-up for Picnic Areas
-    const picnicAreasPoints = {
+    const popuppicnicAreas = {
      "title": "<b>Picnic Areas<b>",
      "content": "{POINAME}<br><b></b> {POITYPE}"
 }    
@@ -256,7 +256,7 @@ require([
     popupTemplate: popuppicnicAreas
   });
 
-  map.add(PinicAreasLayer);
+  map.add(PicnicAreasLayer);
 
   //create Parking Icon
     const parkingRenderer = {
