@@ -263,7 +263,7 @@ require([
      "type": "simple",
      "symbol": {
      "type": "picture-marker",
-     "url": "img/rectangle_addresses.png", //need a new url
+     "url": "img/parkinglot.jpg", //need a new url
      "width": "24px",
      "height": "24px"   
     
