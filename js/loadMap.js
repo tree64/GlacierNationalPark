@@ -283,6 +283,32 @@ require([
 
   map.add(ParkingLayer);
 
+  //create Campgrounds Icon
+    const CampgroundsRenderer = {
+     "type": "simple",
+     "symbol": {
+     "type": "picture-marker",
+     "url": "img/rectangle_addresses.png", //need a new url
+     "width": "24px",
+     "height": "24px"   
+    
+//Define a pop-up for Campgrounds
+    const popupCampgrounds = {
+     "title": "<b>Campgrounds<b>",
+     "content": "{POINAME}<br><b></b> {POITYPE}, {NOTES}"
+}    
+
+//Ranger Stations feature layer (points), 
+  const CampgroundsLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_Campgrounds/FeatureServer",
+    renderer: CampgroundsRenderer,
+    outFields: ["POINAME","POITYPE", "NOTES'],
+    popupTemplate: popupCampgrounds
+  });
+
+  map.add(CampgroundsLayer);
+
+
     
     
   // Define a pop-up for Trails
