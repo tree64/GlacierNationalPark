@@ -751,7 +751,7 @@ const stormstructuresLayer = new FeatureLayer({
     }
   });
 
-  //create node for content panel
+  //create node for content panel(remove not needed)
   var node = domConstruct.create("div", {
     className: "myPanel",
     innerHTML: "<b>Resident Portal Information Guide</b><br>" +
@@ -911,7 +911,7 @@ const stormstructuresLayer = new FeatureLayer({
   });
 
 
-  //Search Widget Functionality Enabling Leaf Crews to Query Neighborhoods
+  //Search Widget Functionality Enabling Leaf Crews to Query Neighborhoods (keep search widget to allow the user to search bear reports.)
   var searchWidget = new Search({
     view: view,
     allPlaceholder: "Enter Subdivision Name",
