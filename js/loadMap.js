@@ -313,21 +313,8 @@ require([
     
   // Define a pop-up for Trails
   const popupTrails = {
-    title: "<b>{SUB_NAME}<br><b>Trees: {TREE_TOTAL} <b>Storm Drains:</b> {STORM_TOTAL}",
-    content: [{
-      type: "media",
-       mediaInfos: [{
-        type: "pie-chart", //delete this line to remove pie chart
-         size: 6, //delete this line to remove pie chart
-         
-
-         caption: "Ratio of Tree to Storm Drains: {TREE_TOTAL}:{STORM_TOTAL}", //delete this line to remove pie chart
-         value: {
-           fields: [ "TREE_TOTAL","STORM_TOTAL" ],
-           normalizeField: null,
-           }
-         }]
-     }]
+    "title": "<b>Trails</b>",
+    "content": "{NAME} <br><b><b>,{AREA},{Miles}, {DESC_SEG}, {TRAILROUTE}"
    }
 
   const TrailsRenderer = {
@@ -354,10 +341,7 @@ require([
 
   map.add(TrailsLayer, 0);   
     
-    
-
-
-    
+ 
   const treesRenderer = {
     type: "simple", // autocasts as new SimpleRenderer()
     symbol: defaultSym,
