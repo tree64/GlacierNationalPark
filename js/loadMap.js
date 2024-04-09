@@ -760,44 +760,44 @@ const stormstructuresLayer = new FeatureLayer({
 
      var item = event.item;
 
-     if (item.title === "GEOG777PROJ2 Layers - Address Points") {
+     if (item.title === "trailheadsLayer") { //"GEOG777PROJ2 Layers - Address Points"
        // open the list item in the LayerList
        item.open = true;
        // change the title to something more descriptive
-       item.title = "Address Points";
+       item.title = "Trail Heads"; //Address Points
        //add legend
        item.panel = {
          content: "legend",
          open: true
        };
      }
-     if (item.title === "GEOG777PROJ2 Layers - TreeInventory") {
+     if (item.title === "RestRoomsLayers") { //GEOG777PROJ Layers - TreeInventory"
        // open the list item in the LayerList
        item.open = true;
        // change the title to something more descriptive
-       item.title = "Trees";
+       item.title = "RestRooms"; //Trees
        //add legend
        item.panel = {
          content: "legend",
          open: true
        };
      }
-     if (item.title === "GEOG777PROJ2 Layers - Storm Structures") {
+     if (item.title === "ViewPointsLayer") { //"GEOG777PROJ2 Layers - Storm Structures"
        // open the list item in the LayerList
        item.open = true;
        // change the title to something more descriptive
-       item.title = "Storm Drains";
+       item.title = "View Points"; //"Storm Drains"
        //add legend
        item.panel = {
          content: "legend",
          open: true
        };
      }
-     if (item.title === "GEOG777PROJ2 Layers - IncidentReport") {
+     if (item.title === "bearReportsLayer") { //GEOG777PROJ2 Layers - IncidentReport
        // open the list item in the LayerList
        item.open = true;
        // change the title to something more descriptive
-       item.title = "Leaf Collection Incidents";
+       item.title = "Bear Reports"; //Leaf Collection Incidents
        //add legend
        item.panel = {
          content: "legend",
