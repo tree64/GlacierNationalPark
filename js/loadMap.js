@@ -355,7 +355,7 @@ require([
   }
 */ 
   
-//adding icon types for incident features(convert for bear sightings, no need to have a severity)
+//adding icon types for incident features(convert for bear sightings, Andy I don't think you need this)
 var incidentRenderer = {
   type: "unique-value",  // autocasts as new UniqueValueRenderer()
   legendOptions: {
@@ -488,7 +488,7 @@ const stormstructuresLayer = new FeatureLayer({
 
   map.add(stormstructuresLayer);
 
-  // Define a pop-up for subdivisions(don't know if I need it, probably not)
+  // Define a pop-up for subdivisions(don't know if I need it, probably not)Andy I don't think you need this.
   const popupSubdivisions = {
     title: "<b>{SUB_NAME}<br><b>Trees: {TREE_TOTAL} <b>Storm Drains:</b> {STORM_TOTAL}",
     content: [{
@@ -539,7 +539,7 @@ const stormstructuresLayer = new FeatureLayer({
 
   map.add(subdivisionsLayer, 0);
 
-  //Location Widget
+  //Location Widget (Andy keep)
   const locate = new Locate({
     view: view,
     useHeadingEnabled: false,
@@ -593,19 +593,19 @@ const stormstructuresLayer = new FeatureLayer({
 //create editor panel (this is where you add the various layers that you will display) EDIT THIS ANDY
   const editor = new Editor({
     view: view,
-    label: "Incident",
+    label: "Bear Report", //"incident"
     allowedWorkflows: ["create", "update"],
     layerInfos: [{
       view: view,
-      layer: incidentLayer,
+      layer: bearReportLayer,
       fieldConfig: [
         {
-          name: "IncidentType",
-          label: "Incident Type"
+          name: "BearReportType", //"IncidentType"
+          label: "Bear Report"  //"Incident Type"
         },
         {
-          name: "Severity",
-          label: "Severity"
+          //name: "Severity",
+          //label: "Severity"
         }],
       enabled: true, // default is true, set to false to disable editing functionality
       addEnabled: true, // default is true, set to false to disable the ability to add a new feature
@@ -614,7 +614,7 @@ const stormstructuresLayer = new FeatureLayer({
     },
     {
       view: view,
-      layer: treesLayer,
+      layer: TrailHeadsLayer,
       enabled: false, // default is true, set to false to disable editing functionality
       addEnabled: false, // default is true, set to false to disable the ability to add a new feature
       updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
@@ -622,7 +622,7 @@ const stormstructuresLayer = new FeatureLayer({
     },
     {
       view: view,
-      layer: addresspointsLayer,
+      layer: RestRoomsLayer,
       enabled: false, // default is true, set to false to disable editing functionality
       addEnabled: false, // default is true, set to false to disable the ability to add a new feature
       updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
@@ -630,7 +630,7 @@ const stormstructuresLayer = new FeatureLayer({
     },
     {
       view: view,
-      layer: stormstructuresLayer,
+      layer: viewPointsLayer,
       enabled: false, // default is true, set to false to disable editing functionality
       addEnabled: false, // default is true, set to false to disable the ability to add a new feature
       updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
@@ -638,12 +638,44 @@ const stormstructuresLayer = new FeatureLayer({
     },
     {
       view: view,
-      layer: subdivisionsLayer,
+      layer: RangerStationLayer,
       enabled: false, // default is true, set to false to disable editing functionality
       addEnabled: false, // default is true, set to false to disable the ability to add a new feature
       updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
       deleteEnabled: false // default is true, set to false to disable the ability to delete features
-    }
+    },
+     {
+      view: view,
+      layer: PicnicAreasLayer,
+      enabled: false, // default is true, set to false to disable editing functionality
+      addEnabled: false, // default is true, set to false to disable the ability to add a new feature
+      updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
+      deleteEnabled: false // default is true, set to false to disable the ability to delete features
+    },
+     {
+      view: view,
+      layer: ParkingLayer,
+      enabled: false, // default is true, set to false to disable editing functionality
+      addEnabled: false, // default is true, set to false to disable the ability to add a new feature
+      updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
+      deleteEnabled: false // default is true, set to false to disable the ability to delete features
+    },
+     {
+      view: view,
+      layer: CampgroundsLayer,
+      enabled: false, // default is true, set to false to disable editing functionality
+      addEnabled: false, // default is true, set to false to disable the ability to add a new feature
+      updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
+      deleteEnabled: false // default is true, set to false to disable the ability to delete features
+    },
+     {
+      view: view,
+      layer: TrailsLayer,
+      enabled: false, // default is true, set to false to disable editing functionality
+      addEnabled: false, // default is true, set to false to disable the ability to add a new feature
+      updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
+      deleteEnabled: false // default is true, set to false to disable the ability to delete features
+    }           
   ]
   });
 
