@@ -604,8 +604,8 @@ const stormstructuresLayer = new FeatureLayer({
           label: "Bear Report"  //"Incident Type"
         },
         {
-          //name: "Severity",
-          //label: "Severity"
+          //name: "Severity", might need to change this Andy
+          //label: "Severity" might need to change this Andy
         }],
       enabled: true, // default is true, set to false to disable editing functionality
       addEnabled: true, // default is true, set to false to disable the ability to add a new feature
@@ -683,14 +683,14 @@ const stormstructuresLayer = new FeatureLayer({
   editor.viewModel.watch('state', function(state){
     if(state === 'ready'){
       setTimeout(function(){
-        document.getElementsByClassName('esri-editor__title esri-heading')[0].innerHTML = 'Leaf Collection Incident';
+        document.getElementsByClassName('esri-editor__title esri-heading')[0].innerHTML = 'Bear Reports';//'Leaf Collection Incident'
         var actions = document.getElementsByClassName("esri-editor__feature-list-name");
         Array.from(actions).forEach(function(ele){
           if(ele.innerHTML==='Add feature'){
-            ele.innerHTML = 'Report New Incident';
+            ele.innerHTML = 'Report New Bear Report'; //Report New Incident
           }
       	  if(ele.innerHTML==='Edit feature'){
-            ele.innerHTML = 'Modify or Delete Existing Incident';
+            ele.innerHTML = 'Modify or Delete Existing Bear Report'; //modify or delete existing incident
           
           }
         });
@@ -698,7 +698,7 @@ const stormstructuresLayer = new FeatureLayer({
     }
   });
 
-  //create node for content panel(remove not needed)
+  //create node for content panel(remove not needed, could add the reservation.gov or the nps site here Andy)
   var node = domConstruct.create("div", {
     className: "myPanel",
     innerHTML: "<b>Resident Portal Information Guide</b><br>" +
@@ -835,7 +835,7 @@ const stormstructuresLayer = new FeatureLayer({
    // expandTooltip: "Expand LayerList", // optional, defaults to "Expand" for English locale
    view: view,
    content: editor,
-   expandTooltip: "Report Leaf Collection Incident"
+   expandTooltip: "Bear Reports" //"Report Leaf Collection Incident" 
   });
 
   view.ui.add(editorExpand, "top-left");
@@ -846,7 +846,7 @@ const stormstructuresLayer = new FeatureLayer({
   // Add the home button to the top left corner of the view
   view.ui.add(homeBtn, "top-left");
 
-  //pop up for subdivision being searched - REMOVE THIS ANDY
+  //pop up for subdivision being searched - edit for Bear Reports ANDY
   var subdivisionSearch = new FeatureLayer({
    url:
      "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
