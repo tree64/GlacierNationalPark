@@ -590,7 +590,7 @@ const stormstructuresLayer = new FeatureLayer({
   });
 */
   
-//create editor panel (this is where you add the various layers that you will display)
+//create editor panel (this is where you add the various layers that you will display) EDIT THIS ANDY
   const editor = new Editor({
     view: view,
     label: "Incident",
@@ -647,7 +647,7 @@ const stormstructuresLayer = new FeatureLayer({
   ]
   });
 
-  //Editor Widget Functionality that allows for user submitted data
+  //Editor Widget Functionality that allows for user submitted data - EDIT THIS ANDY FOR BEAR REPORTS
   editor.viewModel.watch('state', function(state){
     if(state === 'ready'){
       setTimeout(function(){
@@ -723,7 +723,7 @@ const stormstructuresLayer = new FeatureLayer({
    // executes for each ListItem in the LayerList
    listItemCreatedFunction: function (event) {
 
-     // The event object contains properties of the
+     // The event object contains properties of the - EDIT THIS WITH YOUR NEW LAYERS ANDY
      // layer in the LayerList widget.
 
      var item = event.item;
@@ -814,7 +814,7 @@ const stormstructuresLayer = new FeatureLayer({
   // Add the home button to the top left corner of the view
   view.ui.add(homeBtn, "top-left");
 
-  //pop up for subdivision being searched
+  //pop up for subdivision being searched - REMOVE THIS ANDY
   var subdivisionSearch = new FeatureLayer({
    url:
      "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
@@ -826,7 +826,7 @@ const stormstructuresLayer = new FeatureLayer({
   });
 
 
-  //Search Widget Functionality Enabling Leaf Crews to Query Neighborhoods (keep search widget to allow the user to search bear reports.)
+  //Search Widget Functionality Enabling Leaf Crews to Query Neighborhoods (keep search widget to allow the user to search bear reports.ANDY)
   var searchWidget = new Search({
     view: view,
     allPlaceholder: "Enter Subdivision Name",
