@@ -715,29 +715,29 @@ require([
   });
 
   //create node for content panel(remove not needed, could add the reservation.gov or the nps site here Andy)
-  var node = domConstruct.create("div", {
-    className: "myPanel",
-    innerHTML: "<b>Resident Portal Information Guide</b><br>" +
-    '<a class="none" href="https://www.naperville.il.us/" target="_blank"><img class="NPD" src="img/logo.png" alt="NPD" style="width:111px;height:42px;"></a>' +
-    "<p>Thank you for utilizing the Naperville Leaf Collection Resident Portal! The portal offers residents the ability to locate and flag leaf collection incidents in an interactive map, allowing Leaf Crews to respond to concerns in a timely manner.</p></b>" +
-    '<a class="none" href="https://www.naperville.il.us/services/brush-leaf-and-yard-waste-collection/bulk-curbside-leaf-collection/" target="_blank"><img class="NPD" src="img/leaf4.jpg" alt="Prairie Crayfish" style="width:100px;height:60px;"></a></b>' +
-    '<a class="none" href="https://app.powerbigov.us/view?r=eyJrIjoiNzlhMDgyOWQtYTBjMi00MzgwLWFiM2QtYjg3YTBhZjVlYjU5IiwidCI6ImI5YTBmOTlmLTRiZGUtNGI4MS04YjIxLWZjZWRkNDU4ZmVjNSJ9" target="_blank"><img class="NPD" src="img/icons8-graph-report-64.png" alt="NPD" style="width:64px;height:64px;"></a>' +
-    "<p>In years past, the 3rd leaf collection cycle was neccessary in order to account for late leaf-fall or missed-service. However, this delayed the fleet's Winter conversion to salt trucks in December. <br> With your continued map contributions, we can make this an effective program that responds to your needs in real-time! </p></b>"
-  });
+  // var node = domConstruct.create("div", {
+  //   className: "myPanel",
+  //   innerHTML: "<b>Resident Portal Information Guide</b><br>" +
+  //   '<a class="none" href="https://www.naperville.il.us/" target="_blank"><img class="NPD" src="img/logo.png" alt="NPD" style="width:111px;height:42px;"></a>' +
+  //   "<p>Thank you for utilizing the Naperville Leaf Collection Resident Portal! The portal offers residents the ability to locate and flag leaf collection incidents in an interactive map, allowing Leaf Crews to respond to concerns in a timely manner.</p></b>" +
+  //   '<a class="none" href="https://www.naperville.il.us/services/brush-leaf-and-yard-waste-collection/bulk-curbside-leaf-collection/" target="_blank"><img class="NPD" src="img/leaf4.jpg" alt="Prairie Crayfish" style="width:100px;height:60px;"></a></b>' +
+  //   '<a class="none" href="https://app.powerbigov.us/view?r=eyJrIjoiNzlhMDgyOWQtYTBjMi00MzgwLWFiM2QtYjg3YTBhZjVlYjU5IiwidCI6ImI5YTBmOTlmLTRiZGUtNGI4MS04YjIxLWZjZWRkNDU4ZmVjNSJ9" target="_blank"><img class="NPD" src="img/icons8-graph-report-64.png" alt="NPD" style="width:64px;height:64px;"></a>' +
+  //   "<p>In years past, the 3rd leaf collection cycle was neccessary in order to account for late leaf-fall or missed-service. However, this delayed the fleet's Winter conversion to salt trucks in December. <br> With your continued map contributions, we can make this an effective program that responds to your needs in real-time! </p></b>"
+  // });
 
-  const purpose = new Expand({
-   expandIconClass: "esri-icon-description",
-   view: view,
-   expanded: false,
-   expandTooltip: "Application Purpose",
-   content: node
-  });
+  // const purpose = new Expand({
+  //  expandIconClass: "esri-icon-description",
+  //  view: view,
+  //  expanded: false,
+  //  expandTooltip: "Application Purpose",
+  //  content: node
+  // });
 
-  watchUtils.whenTrueOnce(purpose, 'expanded', function(){
-   on(dom.byId("btnSubmit"), 'click', function(){
-     console.log("submit clicked");
-   });
-  });
+  // watchUtils.whenTrueOnce(purpose, 'expanded', function(){
+  //  on(dom.byId("btnSubmit"), 'click', function(){
+  //    console.log("submit clicked");
+  //  });
+  // });
 
  //creating basemap widget and setting its container to a div
   var basemapGallery = new BasemapGallery({
@@ -820,18 +820,62 @@ require([
          open: true
        };
      }
-     if (item.title === "GEOG777PROJ2 Layers - Subdivisions") {
+     if (item.title === "RangerStationLayer") { //GEOG777PROJ2 Layers - Subdivisions
        // open the list item in the LayerList
        item.open = true;
        // change the title to something more descriptive
-       item.title = "Subdivisions";
+       item.title = "Ranger Stations";
        //add legend
        item.panel = {
          content: "legend",
          open: true
        };
      }
-   }
+   if (item.title === "PicnicAreasLayer") { //GEOG777PROJ2 Layers - Subdivisions
+       // open the list item in the LayerList
+       item.open = true;
+       // change the title to something more descriptive
+       item.title = "Picnic Areas";
+       //add legend
+       item.panel = {
+         content: "legend",
+         open: true
+       };
+     }
+   if (item.title === "ParkingLayer") { //GEOG777PROJ2 Layers - Subdivisions
+       // open the list item in the LayerList
+       item.open = true;
+       // change the title to something more descriptive
+       item.title = "Parking";
+       //add legend
+       item.panel = {
+         content: "legend",
+         open: true
+       };
+     }
+   if (item.title === "CampgroundsLayer") { //GEOG777PROJ2 Layers - Subdivisions
+       // open the list item in the LayerList
+       item.open = true;
+       // change the title to something more descriptive
+       item.title = "Campgrounds";
+       //add legend
+       item.panel = {
+         content: "legend",
+         open: true
+       };
+     }
+     if (item.title === "TrailsLayer") { //GEOG777PROJ2 Layers - Subdivisions
+       // open the list item in the LayerList
+       item.open = true;
+       // change the title to something more descriptive
+       item.title = "Trails";
+       //add legend
+       item.panel = {
+         content: "legend",
+         open: true
+       };
+     }  
+   }   
   });
 
   //adds expand button to map TRY TO CHANGE ICON AND WORDS OF EXPAND BOX
