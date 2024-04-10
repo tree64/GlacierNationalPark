@@ -747,8 +747,24 @@ require([
       addEnabled: false, // default is true, set to false to disable the ability to add a new feature
       updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
       deleteEnabled: false // default is true, set to false to disable the ability to delete features
-    }           
-  ]
+    },           
+     {
+      view: view,
+      layer: GNPboundaryLayer,
+      enabled: false, // default is true, set to false to disable editing functionality
+      addEnabled: false, // default is true, set to false to disable the ability to add a new feature
+      updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
+      deleteEnabled: false // default is true, set to false to disable the ability to delete features
+    },
+      {
+      view: view,
+      layer: RoadsLayer,
+      enabled: false, // default is true, set to false to disable editing functionality
+      addEnabled: false, // default is true, set to false to disable the ability to add a new feature
+      updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
+      deleteEnabled: false // default is true, set to false to disable the ability to delete features
+    }                    
+   ]
   });
 
   //Editor Widget Functionality that allows for user submitted data - EDIT THIS ANDY FOR BEAR REPORTS
