@@ -112,7 +112,23 @@ require([
   //   popupTemplate: popupAddresspoints
   // });
 
-
+//adding icon types for incident features(convert for bear sightings, Andy I don't know if you need this)
+// var incidentRenderer = {
+//   type: "unique-value",  // autocasts as new UniqueValueRenderer()
+//   legendOptions: {
+//     title: "Severity"
+//   },
+//   field: "Severity",  // values returned by this function will
+//                      // be used to render features by type
+//   uniqueValueInfos: [
+//     {
+//       value: "Low",  // features labeled as "Low"
+//       label: "Low: Reponse in 1 week",
+//       symbol: {
+//         "type": "picture-marker",
+//         "url": "img/greenleaf.png",
+//         "width": "12px",
+//         "height": "12px"
 
  // map.add(addresspointsLayer);
 
@@ -356,188 +372,188 @@ require([
 */ 
   
 //adding icon types for incident features(convert for bear sightings, Andy I don't think you need this)
-var incidentRenderer = {
-  type: "unique-value",  // autocasts as new UniqueValueRenderer()
-  legendOptions: {
-    title: "Severity"
-  },
-  field: "Severity",  // values returned by this function will
-                     // be used to render features by type
-  uniqueValueInfos: [
-    {
-      value: "Low",  // features labeled as "Low"
-      label: "Low: Reponse in 1 week",
-      symbol: {
-        "type": "picture-marker",
-        "url": "img/greenleaf.png",
-        "width": "12px",
-        "height": "12px"
-      }
-    }, {
-      value: "Moderate",  // features labeled as "Moderate"
-      label: "Moderate: Response in 1-2 days",
-      symbol: {
-        "type": "picture-marker",
-        "url": "img/yellowleaf.png",
-        "width": "12px",
-        "height": "12px"
-      }
-    }, {
-      value: "High",  // features labeled as "High"
-      label: "High: Response in <1 day",
-      symbol: {
-        "type": "picture-marker",
-        "url": "img/redleaf.png",
-        "width": "12px",
-        "height": "12px"
-      }
-    }
-  ]
-};
+// var incidentRenderer = {
+//   type: "unique-value",  // autocasts as new UniqueValueRenderer()
+//   legendOptions: {
+//     title: "Severity"
+//   },
+//   field: "Severity",  // values returned by this function will
+//                      // be used to render features by type
+//   uniqueValueInfos: [
+//     {
+//       value: "Low",  // features labeled as "Low"
+//       label: "Low: Reponse in 1 week",
+//       symbol: {
+//         "type": "picture-marker",
+//         "url": "img/greenleaf.png",
+//         "width": "12px",
+//         "height": "12px"
+//       }
+//     }, {
+//       value: "Moderate",  // features labeled as "Moderate"
+//       label: "Moderate: Response in 1-2 days",
+//       symbol: {
+//         "type": "picture-marker",
+//         "url": "img/yellowleaf.png",
+//         "width": "12px",
+//         "height": "12px"
+//       }
+//     }, {
+//       value: "High",  // features labeled as "High"
+//       label: "High: Response in <1 day",
+//       symbol: {
+//         "type": "picture-marker",
+//         "url": "img/redleaf.png",
+//         "width": "12px",
+//         "height": "12px"
+//       }
+//     }
+//   ]
+// };
 
 
 
-      // Define a pop-up for Incidents
-      const popupIncidents = {
-        "title": "<b>Incident<b>",
-        "content": "<b>Severity:</b> {Severity}<br><b>Type:</b> {IncidentType}"
-      }
+  //     // Define a pop-up for Incidents
+  //     const popupIncidents = {
+  //       "title": "<b>Incident<b>",
+  //       "content": "<b>Severity:</b> {Severity}<br><b>Type:</b> {IncidentType}"
+  //     }
 
-    const incidentLayer = new FeatureLayer({
-        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/0",
-        renderer: incidentRenderer,
-        outFields: ["OBJECTID","IncidentType","Severity"],
-        popupTemplate: popupIncidents
-      });
+  //   const incidentLayer = new FeatureLayer({
+  //       url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/0",
+  //       renderer: incidentRenderer,
+  //       outFields: ["OBJECTID","IncidentType","Severity"],
+  //       popupTemplate: popupIncidents
+  //     });
 
-  incidentLayer.visible = true;
-  map.add(incidentLayer);
+  // incidentLayer.visible = true;
+  // map.add(incidentLayer);
 
   //adding icon types for stormwater features
-  var stormstructuresRenderer = {
-    type: "unique-value",  // autocasts as new UniqueValueRenderer()
-    legendOptions: {
-      title: "Types"
-    },
-    field: "SUBTYPE",  // values returned by this function will
-                       // be used to render features by type
-    uniqueValueInfos: [
-      {
-        value: "1",  // features labeled as "High"
-        label: "Catch Basin",
-        symbol: {
-          "type": "picture-marker",
-          "url": "img/catchbasin_icon.png",
-          "width": "12px",
-          "height": "12px"
-        }
-      }, {
-        value: "9",  // features labeled as "Medium"
-        label: "FES Inlet",
-        symbol: {
-          "type": "picture-marker",
-          "url": "img/FESinlet_icon.png",
-          "width": "12px",
-          "height": "12px"
-        }
-      }, {
-        value: "2",  // features labeled as "Low"
-        label: "Manhole (Open Lid)",
-        symbol: {
-          "type": "picture-marker",
-          "url": "img/manholeopenlid_icon.png",
-          "width": "12px",
-          "height": "12px"
-        }
-      }, {
-        value: "4",  // features labeled as "High"
-        label: "Non-Standard Inlet",
-        symbol: {
-          "type": "picture-marker",
-          "url": "img/nonstandardinlet_icon.png",
-          "width": "12px",
-          "height": "12px"
-        }
-      }, {
-        value: "8",  // features labeled as "Medium"
-        label: "Standard Inlet",
-        symbol: {
-          "type": "picture-marker",
-          "url": "img/standardinlet_icon.png",
-          "width": "12px",
-          "height": "12px"
-        }
-      }
-    ]
-  };
+  // var stormstructuresRenderer = {
+  //   type: "unique-value",  // autocasts as new UniqueValueRenderer()
+  //   legendOptions: {
+  //     title: "Types"
+  //   },
+  //   field: "SUBTYPE",  // values returned by this function will
+  //                      // be used to render features by type
+  //   uniqueValueInfos: [
+  //     {
+  //       value: "1",  // features labeled as "High"
+  //       label: "Catch Basin",
+  //       symbol: {
+  //         "type": "picture-marker",
+  //         "url": "img/catchbasin_icon.png",
+  //         "width": "12px",
+  //         "height": "12px"
+  //       }
+  //     }, {
+  //       value: "9",  // features labeled as "Medium"
+  //       label: "FES Inlet",
+  //       symbol: {
+  //         "type": "picture-marker",
+  //         "url": "img/FESinlet_icon.png",
+  //         "width": "12px",
+  //         "height": "12px"
+  //       }
+  //     }, {
+  //       value: "2",  // features labeled as "Low"
+  //       label: "Manhole (Open Lid)",
+  //       symbol: {
+  //         "type": "picture-marker",
+  //         "url": "img/manholeopenlid_icon.png",
+  //         "width": "12px",
+  //         "height": "12px"
+  //       }
+  //     }, {
+  //       value: "4",  // features labeled as "High"
+  //       label: "Non-Standard Inlet",
+  //       symbol: {
+  //         "type": "picture-marker",
+  //         "url": "img/nonstandardinlet_icon.png",
+  //         "width": "12px",
+  //         "height": "12px"
+  //       }
+  //     }, {
+  //       value: "8",  // features labeled as "Medium"
+  //       label: "Standard Inlet",
+  //       symbol: {
+  //         "type": "picture-marker",
+  //         "url": "img/standardinlet_icon.png",
+  //         "width": "12px",
+  //         "height": "12px"
+  //       }
+  //     }
+  //   ]
+  // };
 
-  // Define a pop-up for Incidents
-  const popupStormstructures = {
-    "title": "<b>Storm Drain Information<b>",
-    "content": "<b>Type:</b> {SUBTYPE}<br><b>ID:</b> {STRUCTUREI}<br><b>Depth:</b> {DEPTH} ft<br><b>Location:</b> {LOCATION}"
-  }
+//   // Define a pop-up for Incidents
+//   const popupStormstructures = {
+//     "title": "<b>Storm Drain Information<b>",
+//     "content": "<b>Type:</b> {SUBTYPE}<br><b>ID:</b> {STRUCTUREI}<br><b>Depth:</b> {DEPTH} ft<br><b>Location:</b> {LOCATION}"
+//   }
 
-const stormstructuresLayer = new FeatureLayer({
-    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/3",
-    renderer: stormstructuresRenderer,
-    outFields: ["OBJECTID","IncidentType","Severity"],
-    popupTemplate: popupStormstructures,
-    autoOpenEnabled: true,
-    collapseEnabled: false
-  });
+// const stormstructuresLayer = new FeatureLayer({
+//     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/3",
+//     renderer: stormstructuresRenderer,
+//     outFields: ["OBJECTID","IncidentType","Severity"],
+//     popupTemplate: popupStormstructures,
+//     autoOpenEnabled: true,
+//     collapseEnabled: false
+//   });
 
-  map.add(stormstructuresLayer);
+//   map.add(stormstructuresLayer);
 
-  // Define a pop-up for subdivisions(don't know if I need it, probably not)Andy I don't think you need this.
-  const popupSubdivisions = {
-    title: "<b>{SUB_NAME}<br><b>Trees: {TREE_TOTAL} <b>Storm Drains:</b> {STORM_TOTAL}",
-    content: [{
-      type: "media",
-       mediaInfos: [{
-        type: "pie-chart", //delete this line to remove pie chart
-         size: 6, //delete this line to remove pie chart
+//   // Define a pop-up for subdivisions(don't know if I need it, probably not)Andy I don't think you need this.
+//   const popupSubdivisions = {
+//     title: "<b>{SUB_NAME}<br><b>Trees: {TREE_TOTAL} <b>Storm Drains:</b> {STORM_TOTAL}",
+//     content: [{
+//       type: "media",
+//        mediaInfos: [{
+//         type: "pie-chart", //delete this line to remove pie chart
+//          size: 6, //delete this line to remove pie chart
          
 
-         caption: "Ratio of Tree to Storm Drains: {TREE_TOTAL}:{STORM_TOTAL}", //delete this line to remove pie chart
-         value: {
-           fields: [ "TREE_TOTAL","STORM_TOTAL" ],
-           normalizeField: null,
-           }
-         }]
-     }]
-   }
+//          caption: "Ratio of Tree to Storm Drains: {TREE_TOTAL}:{STORM_TOTAL}", //delete this line to remove pie chart
+//          value: {
+//            fields: [ "TREE_TOTAL","STORM_TOTAL" ],
+//            normalizeField: null,
+//            }
+//          }]
+//      }]
+//    }
 
-   view.popup.dockEnabled = true
-   view.popup.collapseEnabled = false
-   view.popup.dockOptions = {
-    breakpoint: false,
-    buttonEnabled: true,
-    position: 'bottom-right'
-  }
+//    view.popup.dockEnabled = true
+//    view.popup.collapseEnabled = false
+//    view.popup.dockOptions = {
+//     breakpoint: false,
+//     buttonEnabled: true,
+//     position: 'bottom-right'
+//   }
 
-  const subdivisionsRenderer = {
-    type: "simple",
-    symbol: {
-      type: "simple-fill",
-      size: 6,
-      color: "#71de6e",
-      outline: {
-        color: [128, 128, 128, 0.5],
-        width: "0.5px"
-      }
-    }
-  };
+//   const subdivisionsRenderer = {
+//     type: "simple",
+//     symbol: {
+//       type: "simple-fill",
+//       size: 6,
+//       color: "#71de6e",
+//       outline: {
+//         color: [128, 128, 128, 0.5],
+//         width: "0.5px"
+//       }
+//     }
+//   };
 
-  //school district feature layer (polygons)
-  const subdivisionsLayer = new FeatureLayer({
-    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
-    renderer: subdivisionsRenderer,
-    opacity: 0.2,
-    outFields: ["SUB_NAME","TREE_TOTAL","STORM_TOTAL"],
-    popupTemplate: popupSubdivisions
-  });
+//   //school district feature layer (polygons)
+//   const subdivisionsLayer = new FeatureLayer({
+//     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
+//     renderer: subdivisionsRenderer,
+//     opacity: 0.2,
+//     outFields: ["SUB_NAME","TREE_TOTAL","STORM_TOTAL"],
+//     popupTemplate: popupSubdivisions
+//   });
 
-  map.add(subdivisionsLayer, 0);
+//   map.add(subdivisionsLayer, 0);
 
   //Location Widget (Andy keep)
   const locate = new Locate({
@@ -604,7 +620,7 @@ const stormstructuresLayer = new FeatureLayer({
           label: "Bear Report"  //"Incident Type"
         },
         {
-          //name: "Severity", might need to change this Andy
+          //name: "Severity", might need to change this Andy change it to the fields that you want the user to edit
           //label: "Severity" might need to change this Andy
         }],
       enabled: true, // default is true, set to false to disable editing functionality
