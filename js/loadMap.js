@@ -907,12 +907,12 @@ require([
   view.ui.add(homeBtn, "top-left");
 
   //pop up for subdivision being searched - edit for Bear Reports ANDY
-  var subdivisionSearch = new FeatureLayer({
+  var bearReportsSearch = new FeatureLayer({ //subdivisionSearch
    url:
-     "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
+     "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",//"https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
    popupTemplate: {
      // autocasts as new PopupTemplate()
-     title: "Subdivision: {SUB_NAME} </br>Trees: {TREE_TOTAL} </br>Total Storm Drains: {STORM_TOTAL}",
+     title: "Bear Reports: {ReportType} ", //"Bear Reports: {SUB_NAME} </br>Trees: {TREE_TOTAL} </br>Total Storm Drains: {STORM_TOTAL}",
      overwriteActions: true
    }
   });
@@ -921,16 +921,16 @@ require([
   //Search Widget Functionality Enabling Leaf Crews to Query Neighborhoods (keep search widget to allow the user to search bear reports.ANDY)
   var searchWidget = new Search({
     view: view,
-    allPlaceholder: "Enter Subdivision Name",
+    allPlaceholder: "Enter Bear Report Type", // Enter Subdivison Name
     sources: [
       {
-        layer: subdivisionSearch,
-        searchFields: ["SUB_NAME"],
-        displayField: "SUB_NAME",
+        layer: bearReportSearch, //subdivisionSearch
+        searchFields: ["ReportType"], //"SUB_NAME"
+        displayField: "ReportType", //"SUB_NAME"
         exactMatch: false,
-        outFields: ["SUB_NAME","TREE_TOTAL","STORM_TOTAL"],
-        name: "Naperville Subdivisions",
-        placeholder: "Subdivision Search (e.g. 'Maple..)"
+        outFields: ["ReportType", "Date", "Time", "Kind"], //"SUB_NAME","TREE_TOTAL","STORM_TOTAL"
+        name: "Bear Reports",//"Naperville Subdivisions"
+        placeholder: "Bear Report Search" //"Subdivision Search (e.g. 'Maple..)"
       }
     ],
     includeDefaultSources: false
