@@ -909,7 +909,7 @@ require([
   //pop up for subdivision being searched - edit for Bear Reports ANDY
   var bearReportsSearch = new FeatureLayer({ //subdivisionSearch
    url:
-     "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",//"https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
+     "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Bear_Encounters/FeatureServer",//"https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
    popupTemplate: {
      // autocasts as new PopupTemplate()
      title: "Bear Reports: {ReportType} ", //"Bear Reports: {SUB_NAME} </br>Trees: {TREE_TOTAL} </br>Total Storm Drains: {STORM_TOTAL}",
