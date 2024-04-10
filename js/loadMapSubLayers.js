@@ -47,20 +47,21 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], functio
       }],
   };
   */
-  // change the url or remove.
+  // change the url or remove.I will comment out, Andy
   // This layer has four sublayers. You can define the visibility of these layers in the
   // sublayers property.
-  var layer = new MapImageLayer({
-    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/schoolDistrictGDB/FeatureServer",
-    sublayers: [
-      {
-        id: 2,
-        visible: true
-      },
-      {
-        id: 1,
-        visible: true
-      },
+  // var layer = new MapImageLayer({
+  //   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/schoolDistrictGDB/FeatureServer",
+  //   sublayers: [
+  //     {
+  //       id: 2,
+  //       visible: true
+  //     },
+  //     {
+  //       id: 1,
+  //       visible: true
+  //     },
+  
   //example of layer with load render being used
   /*    {
         id: 4,
@@ -81,12 +82,12 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], functio
           }
         }
       }, */
-      {
-        id: 0,
-        visible: true
-      }
-    ]
-  });
+  //     {//I will comment this out Andy
+  //       id: 0,
+  //       visible: true
+  //     }
+  //   ]
+  // });
 
   //add layers to map
   var map = new Map({
