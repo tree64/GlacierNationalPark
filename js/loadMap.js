@@ -112,26 +112,6 @@ require([
   //   popupTemplate: popupAddresspoints
   // });
 
-//adding icon types for incident features(convert for bear sightings, Andy I don't know if you need this)
-// var incidentRenderer = {
-//   type: "unique-value",  // autocasts as new UniqueValueRenderer()
-//   legendOptions: {
-//     title: "Severity"
-//   },
-//   field: "Severity",  // values returned by this function will
-//                      // be used to render features by type
-//   uniqueValueInfos: [
-//     {
-//       value: "Low",  // features labeled as "Low"
-//       label: "Low: Reponse in 1 week",
-//       symbol: {
-//         "type": "picture-marker",
-//         "url": "img/greenleaf.png",
-//         "width": "12px",
-//         "height": "12px"
-
- // map.add(addresspointsLayer);
-
  //create TrailHeads Icon
   const trailHeadsRenderer = {
      "type": "simple",
