@@ -82,14 +82,14 @@ require([
   // });
   
     //create Bear Report Icon
- const bearreportRenderer = {
-     "type": "simple",
-     "symbol": {
-     "type": "picture-marker",
-     "url": "img/bear_2.jpg", //need a new url
-     "width": "24px",
-     "height": "24px"   
-  //adding icon types for incident features(convert for bear sightings, Andy I don't think you need this)
+ // const bearreportRenderer = {
+ //     "type": "simple",
+ //     "symbol": {
+ //     "type": "picture-marker",
+ //     "url": "img/bear_2.jpg", //need a new url
+ //     "width": "24px",
+ //     "height": "24px"   
+  //adding icon types for incident features(convert for bear sightings)
 var bearreportRenderer = {
   type: "unique-value",  // autocasts as new UniqueValueRenderer()
   legendOptions: {
@@ -134,7 +134,10 @@ var bearreportRenderer = {
         "width": "12px",
         "height": "12px"
       }  
-  ]
+
+
+          
+    ]
 };    
 
          
