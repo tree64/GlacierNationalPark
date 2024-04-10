@@ -55,10 +55,7 @@ require([
   var homeBtn = new Home({
     view: view
   });
-
-  
-
-//create incident icon
+  //create incident icon
 //add new icons
 
 //create incident icon
@@ -70,7 +67,20 @@ require([
 //     "width": "24px",
 //     "height": "24px"
 //   }
+// }       
+// Define a pop-up for Address Points, don't need
+//  const popupAddresspoints = {
+//   "title": "<b>Full Address<b>",
+//   "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
 // }
+//address label feature layer (points), don't need
+  // const addresspointsLayer = new FeatureLayer({
+  //   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/9",
+  //   renderer: addresspointsRenderer,
+  //   outFields: ["FULL_ADDRE","CITY","STATE","ZIP"],
+  //   popupTemplate: popupAddresspoints
+  // });
+  
     //create Bear Report Icon
  const bearreportRenderer = {
      "type": "simple",
@@ -79,20 +89,62 @@ require([
      "url": "img/bear_2.jpg", //need a new url
      "width": "24px",
      "height": "24px"   
-    
+  //adding icon types for incident features(convert for bear sightings, Andy I don't think you need this)
+var bearreportRenderer = {
+  type: "unique-value",  // autocasts as new UniqueValueRenderer()
+  legendOptions: {
+    title: "Report Type"
+  },
+  field: "ReportType",  // values returned by this function will
+                     // be used to render features by type
+  uniqueValueInfos: [
+    {
+      value: "Sighting",  // features labeled as "Sighting"
+      label: "Sighting",
+      symbol: {
+        "type": "picture-marker",
+        "url": "img/bear_2.jpg",
+        "width": "12px",
+        "height": "12px"
+      }
+    }, {
+      value: "Track",  // features labeled as "Track"
+      label: "Track or Paw Prints",
+      symbol: {
+        "type": "picture-marker",
+        "url": "img/bear_2.jpg",
+        "width": "12px",
+        "height": "12px"
+      }
+    }, {
+      value: "Scat",  // features labeled as "Scat"
+      label: "Scat or Poop",
+      symbol: {
+        "type": "picture-marker",
+        "url": "img/bear_2.jpg",
+        "width": "12px",
+        "height": "12px"
+      }
+    }, {
+      value: "Encounter",  // features labeled as "Encounter"
+      label: "Encounter",
+      symbol: {
+        "type": "picture-marker",
+        "url": "img/bear_2.jpg",
+        "width": "12px",
+        "height": "12px"
+      }  
+  ]
+};    
+
+         
 //Define a pop-up for Bear Reports
  const popupBearReport = {
      "title": "<b>Bear Reports<b>",
      "content": "{Report Type}<br><b></b> {Kind}, {Date} {Time}"
 }    
-         
-// Define a pop-up for Address Points, don't need
-//  const popupAddresspoints = {
-//   "title": "<b>Full Address<b>",
-//   "content": "{FULL_ADDRE}<br><b></b> {CITY}, {STATE} {ZIP}"
-// }
 
-//address label feature layer (points), don't need
+//Bear Report feature layer (points), don't need
   const bearReportLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Bear_Encounters/FeatureServer",
     renderer: bearreportRenderer,
@@ -100,17 +152,24 @@ require([
     popupTemplate: popupBearReport
   });
 
-
-
   map.add(bearReportLayer);
 
-  //address label feature layer (points), don't need
-  // const addresspointsLayer = new FeatureLayer({
-  //   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/9",
-  //   renderer: addresspointsRenderer,
-  //   outFields: ["FULL_ADDRE","CITY","STATE","ZIP"],
-  //   popupTemplate: popupAddresspoints
-  // });
+
+//     // Define a pop-up for Incidents
+  //     const popupIncidents = {
+  //       "title": "<b>Incident<b>",
+  //       "content": "<b>Severity:</b> {Severity}<br><b>Type:</b> {IncidentType}"
+  //     }
+
+  //   const incidentLayer = new FeatureLayer({
+  //       url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/0",
+  //       renderer: incidentRenderer,
+  //       outFields: ["OBJECTID","IncidentType","Severity"],
+  //       popupTemplate: popupIncidents
+  //     });
+
+  // incidentLayer.visible = true;
+  // map.add(incidentLayer);
 
  //create TrailHeads Icon
   const trailHeadsRenderer = {
@@ -136,20 +195,6 @@ require([
   });
   
     map.add(trailHeadsLayer);
-
-    
- //adding icon types for stormwater features (I don't know if I need this)
-
-//  const defaultSym = {
-//   type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-//   color: [0, 0, 0, 0],
-  
-//   outline: {
-//     // autocasts as new SimpleLineSymbol()
-//     color: "#71de6e",
-//     width: 1
-//   }
-// };
 
  //create Restrooms Icon
  const RestroomsRenderer = {
@@ -393,7 +438,20 @@ require([
   });
 
   map.add(RoadsLayer, 0);   
-    
+
+//adding icon types for stormwater features (I don't know if I need this)
+
+//  const defaultSym = {
+//   type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+//   color: [0, 0, 0, 0],
+  
+//   outline: {
+//     // autocasts as new SimpleLineSymbol()
+//     color: "#71de6e",
+//     width: 1
+//   }
+// };
+
   /* only use for single symbol
   //create incident icon
   const incidentRenderer = {
@@ -579,15 +637,6 @@ require([
 //       }
 //     }
 //   };
-
-//   //school district feature layer (polygons)
-//   const subdivisionsLayer = new FeatureLayer({
-//     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
-//     renderer: subdivisionsRenderer,
-//     opacity: 0.2,
-//     outFields: ["SUB_NAME","TREE_TOTAL","STORM_TOTAL"],
-//     popupTemplate: popupSubdivisions
-//   });
 
 //   map.add(subdivisionsLayer, 0);
 
