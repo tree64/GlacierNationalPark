@@ -89,7 +89,7 @@ require([
  //     "url": "img/bear_2.jpg", //need a new url
  //     "width": "24px",
  //     "height": "24px"   
-  //adding icon types for incident features(convert for bear sightings)
+  //adding icon types for incident features(convert for bear sightings, how do I add a second field to report)
 var bearreportRenderer = {
   type: "unique-value",  // autocasts as new UniqueValueRenderer()
   legendOptions: {
