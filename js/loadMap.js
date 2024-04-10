@@ -323,9 +323,6 @@ require([
   });
 
   map.add(CampgroundsLayer);
-
-
-    
     
   // Define a pop-up for Trails
    const popupTrails = {
@@ -357,7 +354,40 @@ require([
 
   map.add(TrailsLayer, 0);   
     
-  
+// Define a pop-up for GNP Boundary
+   const popupGNPboundary = {
+    "title": "<b>Glacier National Park Boundary</b>",
+    "content": {//"{NAME} <br><b><b>,{AREA},{Miles}, {DESC_SEG}, {TRAILROUTE}"
+     }
+   }
+
+   const GNPboundaryRenderer = {
+    type: "simple",
+    symbol: {
+      type: "simple-fill",
+      size: 6,
+      color: "#71de6e",
+      outline: {
+        color: [128, 128, 128, 0.5],
+        width: "0.5px"
+      }
+    }
+  };
+
+  //Adding GNP Boundary feature layer (polygons)
+  const GNPboundaryLayer = new FeatureLayer({
+    url: "https://services5.arcgis.com/qq4v7PSRahj3ckMw/arcgis/rest/services/GNP_Boundary/FeatureServer",
+    renderer: GNPboundaryRenderer,
+    opacity: 0.2,
+    outFields: {//["NAME","AREA","Miles", "DESC_SEG", "TRAILROUTE"],
+    popupTemplate: popupGNPboundary
+    }
+   });
+
+  map.add(GNPboundaryLayer, 0); 
+
+
+    
   /* only use for single symbol
   //create incident icon
   const incidentRenderer = {
