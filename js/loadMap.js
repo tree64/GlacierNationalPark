@@ -806,11 +806,11 @@ require([
   // });
 
 //don't know whether I should keep this or not --------
-  watchUtils.whenTrueOnce(purpose, 'expanded', function(){
-   on(dom.byId("btnSubmit"), 'click', function(){
-     console.log("submit clicked");
-   });
-  });
+  // watchUtils.whenTrueOnce(purpose, 'expanded', function(){
+  //  on(dom.byId("btnSubmit"), 'click', function(){
+  //    console.log("submit clicked");
+  //  });
+  // });
 
  //creating basemap widget and setting its container to a div
   var basemapGallery = new BasemapGallery({
