@@ -147,7 +147,6 @@ require([
      "content": "{POINAME}<br><b></b> {POITYPE}, {UNITNAME}"
 }    
     
-
 //Trail Heads feature layer (points), 
   const trailHeadsLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_TrailHeads/FeatureServer",
@@ -195,7 +194,6 @@ require([
     popupTemplate: popupRestrooms
   });
  
-
   map.add(RestRoomsLayer);
 
  //create ViewPoints Icon
@@ -357,8 +355,7 @@ require([
 // Define a pop-up for GNP Boundary
    const popupGNPboundary = {
     "title": "<b>Glacier National Park Boundary</b>",
-    "content": {//"{NAME} <br><b><b>,{AREA},{Miles}, {DESC_SEG}, {TRAILROUTE}"
-     }
+    //"content": "{NAME} <br><b><b>,{AREA},{Miles}, {DESC_SEG}, {TRAILROUTE}"
    }
 
    const GNPboundaryRenderer = {
@@ -379,14 +376,43 @@ require([
     url: "https://services5.arcgis.com/qq4v7PSRahj3ckMw/arcgis/rest/services/GNP_Boundary/FeatureServer",
     renderer: GNPboundaryRenderer,
     opacity: 0.2,
-    outFields: {//["NAME","AREA","Miles", "DESC_SEG", "TRAILROUTE"],
+   //outFields: //["NAME","AREA","Miles", "DESC_SEG", "TRAILROUTE"],
     popupTemplate: popupGNPboundary
-    }
+    
    });
 
   map.add(GNPboundaryLayer, 0); 
 
+ // Define a pop-up for Roads
+   const popupRoads = {
+    "title": "<b>Roads</b>",
+    "content": "{ROADNAME} <br><b><b>,{ROADNUM},{ADMIN *}, {SURFACE}"
+    } 
+  }
 
+   const RoadsRenderer = {
+    type: "simple",
+    symbol: {
+      type: "simple-fill",
+      size: 6,
+      color: "#71de6e",
+      outline: {
+        color: [128, 128, 128, 0.5],
+        width: "0.5px"
+      }
+    }
+  };
+
+  //Adding Roads feature layer (polygons)
+  const RoadsLayer = new FeatureLayer({
+    url: "https://geo.dot.gov/server/rest/services/Hosted/North_American_Roads_DS/FeatureServer",
+    renderer: RoadsRenderer,
+    opacity: 0.2,
+    outFields: ["ROADNAME","ROADNUM","ADMIN *", "SURFACE"],
+    popupTemplate: popupRoads
+  });
+
+  map.add(RoadsLayer, 0);   
     
   /* only use for single symbol
   //create incident icon
