@@ -620,13 +620,13 @@ var bearreportRenderer = {
 //      }]
 //    }
 
-//    view.popup.dockEnabled = true
-//    view.popup.collapseEnabled = false
-//    view.popup.dockOptions = {
-//     breakpoint: false,
-//     buttonEnabled: true,
-//     position: 'bottom-right'
-//   }
+   view.popup.dockEnabled = true
+   view.popup.collapseEnabled = false
+   view.popup.dockOptions = {
+    breakpoint: false,
+    buttonEnabled: true,
+    position: 'bottom-right'
+  }
 
 //   const subdivisionsRenderer = {
 //     type: "simple",
