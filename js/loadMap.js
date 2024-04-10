@@ -656,8 +656,16 @@ require([
           label: "Bear Report"  //"Incident Type"
         },
         {
-          //name: "Severity", might need to change this Andy change it to the fields that you want the user to edit
-          //label: "Severity" might need to change this Andy
+          name: "Date", //name: "Severity", might need to change this Andy change it to the fields that you want the user to edit
+          label: "Date"//label: "Severity" might need to change this Andy
+        },
+        {
+          name: "Time",
+          label: "Time"
+        },
+        {
+          name: "Kind",
+          label: "Kind"
         }],
       enabled: true, // default is true, set to false to disable editing functionality
       addEnabled: true, // default is true, set to false to disable the ability to add a new feature
