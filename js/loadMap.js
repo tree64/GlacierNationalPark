@@ -947,7 +947,29 @@ require([
          open: true
        };
      }  
-   }   
+     if (item.title === "GNPboundaryLayer") { //GEOG777PROJ2 Layers - Subdivisions
+       // open the list item in the LayerList
+       item.open = true;
+       // change the title to something more descriptive
+       item.title = "Glacier National Park Boundary";
+       //add legend
+       item.panel = {
+         content: "legend",
+         open: true
+       };
+     }
+     if (item.title === "RoadsLayer") { //GEOG777PROJ2 Layers - Subdivisions
+       // open the list item in the LayerList
+       item.open = true;
+       // change the title to something more descriptive
+       item.title = "US North American Roads";
+       //add legend
+       item.panel = {
+         content: "legend",
+         open: true
+       };
+     }
+   } 
   });
 
   //adds expand button to map TRY TO CHANGE ICON AND WORDS OF EXPAND BOX
