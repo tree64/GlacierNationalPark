@@ -45,7 +45,7 @@ require([
   const view = new MapView({
    container: "viewDiv",
    map: map,
-   center: [113.8061405°W, 48.6836922°N], // longitude and latitude for Glacier National Park, 113.8061405°W 48.6836922°N longitude, latitude for Naperville 41.74779842602606, -88.15690516211465
+   center: [113.8061405, 48.6836922], // longitude and latitude for Glacier National Park, 113.8061405°W 48.6836922°N longitude, latitude for Naperville 41.74779842602606, -88.15690516211465
    zoom: 17
   }
   );
@@ -82,63 +82,64 @@ require([
   // });
   
     //create Bear Report Icon
- // const bearreportRenderer = {
- //     "type": "simple",
- //     "symbol": {
- //     "type": "picture-marker",
- //     "url": "img/bear_2.jpg", //need a new url
- //     "width": "24px",
- //     "height": "24px"   
-  //adding icon types for incident features(convert for bear sightings, how do I add a second field to report)
-var bearreportRenderer = {
-  type: "unique-value",  // autocasts as new UniqueValueRenderer()
-  legendOptions: {
-    title: "Report Type"
-  },
-  field: "ReportType",  // values returned by this function will
-                     // be used to render features by type
-  uniqueValueInfos: [
-    {
-      value: "Sighting",  // features labeled as "Sighting"
-      label: "Sighting",
-      symbol: {
-        "type": "picture-marker",
-        "url": "img/bear_2.jpg",
-        "width": "12px",
-        "height": "12px"
-      }
-    }, {
-      value: "Track",  // features labeled as "Track"
-      label: "Track or Paw Prints",
-      symbol: {
-        "type": "picture-marker",
-        "url": "img/bear_2.jpg",
-        "width": "12px",
-        "height": "12px"
-      }
-    }, {
-      value: "Scat",  // features labeled as "Scat"
-      label: "Scat or Poop",
-      symbol: {
-        "type": "picture-marker",
-        "url": "img/bear_2.jpg",
-        "width": "12px",
-        "height": "12px"
-      }
-    }, {
-      value: "Encounter",  // features labeled as "Encounter"
-      label: "Encounter",
-      symbol: {
-        "type": "picture-marker",
-        "url": "img/bear_2.jpg",
-        "width": "12px",
-        "height": "12px"
-      }  
-
+ const bearreportRenderer = {
+     "type": "simple",
+     "symbol": "",
+     "type": "picture-marker",
+     "url": "img/bear_2.jpg", //need a new url
+     "width": "24px",
+     "height": "24px"   
+     }
+//   //adding icon types for incident features(convert for bear sightings, how do I add a second field to report)
+// var bearreportRenderer = {
+//   type: "unique-value",  // autocasts as new UniqueValueRenderer()
+//   legendOptions: {
+//     title: "Report Type"
+//   },
+//   field: "ReportType",  // values returned by this function will
+//                      // be used to render features by type
+//   uniqueValueInfos: [
+//     {
+//       value: "Sighting",  // features labeled as "Sighting"
+//       label: "Sighting",
+//       symbol: {
+//         "type": "picture-marker",
+//         "url": "img/bear_2.jpg",
+//         "width": "12px",
+//         "height": "12px"
+//       }
+//     }, {
+//       value: "Track",  // features labeled as "Track"
+//       label: "Track or Paw Prints",
+//       symbol: {
+//         "type": "picture-marker",
+//         "url": "img/bear_2.jpg",
+//         "width": "12px",
+//         "height": "12px"
+//       }
+//     }, {
+//       value: "Scat",  // features labeled as "Scat"
+//       label: "Scat or Poop",
+//       symbol: {
+//         "type": "picture-marker",
+//         "url": "img/bear_2.jpg",
+//         "width": "12px",
+//         "height": "12px"
+//       }
+//     }, {
+//       value: "Encounter",  // features labeled as "Encounter"
+//       label: "Encounter",
+//       symbol: {
+//         "type": "picture-marker",
+//         "url": "img/bear_2.jpg",
+//         "width": "12px",
+//         "height": "12px"
+//       }  
+//     }
 
           
-    ]
-};    
+//     ]
+// };    
 
          
 //Define a pop-up for Bear Reports
@@ -177,12 +178,13 @@ var bearreportRenderer = {
  //create TrailHeads Icon
   const trailHeadsRenderer = {
      "type": "simple",
-     "symbol": {
+     "symbol": "", //could ? just comment it out?
      "type": "picture-marker",
      "url": "img/trailhead_2.png", 
      "width": "24px",
      "height": "24px"   
-    
+  }
+
 //Define a pop-up for Trail Heads
   const popupTrailHeads = {
      "title": "<b>Trail Heads<b>",
@@ -202,12 +204,12 @@ var bearreportRenderer = {
  //create Restrooms Icon
  const RestroomsRenderer = {
      "type": "simple",
-     "symbol": {
+     "symbol": "",
      "type": "picture-marker",
      "url": "img/restrooms.jpg",
      "width": "24px",
      "height": "24px"   
-    
+ }
 //Define a pop-up for Restrooms
  const popupRestrooms = {
      "title": "<b>RestRooms<b>",
@@ -227,12 +229,12 @@ var bearreportRenderer = {
  //create ViewPoints Icon
  const viewPointsRenderer = {
      "type": "simple",
-     "symbol": {
+     "symbol": "",
      "type": "picture-marker",
-     "url": "img/viewpoint.jpg", //need a new url
+     "url": "img/viewpoint.jpg", 
      "width": "24px",
      "height": "24px"   
-    
+ }
 //Define a pop-up for View Points
  const popupViewPoints = {
      "title": "<b>View Points<b>",
@@ -253,13 +255,14 @@ var bearreportRenderer = {
     //create Ranger Station Icon
   const RangerStationRenderer = {
      "type": "simple",
-     "symbol": {
+     "symbol": "",
      "type": "picture-marker",
      "url": "img/rangerStation.gif",   
      "width": "24px",
      "height": "24px"   
-    
-//Define a pop-up for Ranger Station
+  }
+
+  //Define a pop-up for Ranger Station
     const popupRangerStation = {
      "title": "<b>Ranger Stations<b>",
      "content": "{POINAME}<br><b></b> {POITYPE}"
@@ -278,12 +281,12 @@ var bearreportRenderer = {
  //create Picnic Areas Icon
     const picnicAreasRenderer = {
      "type": "simple",
-     "symbol": {
+     "symbol": "",
      "type": "picture-marker",
-     "url": "img/picnicarea.jpg", //need a new url
+     "url": "img/picnicarea.jpg", 
      "width": "24px",
      "height": "24px"   
-    
+    }
 //Define a pop-up for Picnic Areas
     const popuppicnicAreas = {
      "title": "<b>Picnic Areas<b>",
@@ -303,12 +306,11 @@ var bearreportRenderer = {
   //create Parking Icon
     const parkingRenderer = {
      "type": "simple",
-     "symbol": {
+     "symbol": "",
      "type": "picture-marker",
-     "url": "img/parkinglot.jpg", //need a new url
+     "url": "img/parkinglot.jpg", 
      "width": "24px",
-     "height": "24px"   
-    
+    }
 //Define a pop-up for Parking
     const popupParking = {
      "title": "<b>Parking Lots<b>",
@@ -328,12 +330,12 @@ var bearreportRenderer = {
   //create Campgrounds Icon
     const CampgroundsRenderer = {
      "type": "simple",
-     "symbol": {
+     "symbol": "",
      "type": "picture-marker",
-     "url": "img/campsite.jpg", //need a new url
+     "url": "img/campsite.jpg", 
      "width": "24px",
      "height": "24px"   
-    
+    }
 //Define a pop-up for Campgrounds
     const popupCampgrounds = {
      "title": "<b>Campgrounds<b>",
@@ -344,7 +346,7 @@ var bearreportRenderer = {
     const CampgroundsLayer = new FeatureLayer({
     url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/GNP_POI_Campgrounds/FeatureServer",
     renderer: CampgroundsRenderer,
-    outFields: ["POINAME","POITYPE", "NOTES'],
+    outFields: ["POINAME","POITYPE", "NOTES"],
     popupTemplate: popupCampgrounds
   });
 
@@ -360,11 +362,11 @@ var bearreportRenderer = {
     type: "simple",
     symbol: {
       type: "simple-fill",
-      size: 6,
-      color: "#71de6e",
+      size: 5,
+      color: "#FF0000",//#71de6e", (RED)
       outline: {
-        color: [128, 128, 128, 0.5],
-        width: "0.5px"
+        color: "", //[128, 128, 128, 0.5],
+        width: "", //"0.5px"
       }
     }
   };
@@ -390,11 +392,11 @@ var bearreportRenderer = {
     type: "simple",
     symbol: {
       type: "simple-fill",
-      size: 6,
-      color: "#71de6e",
+      size: 10,
+      color: "#000000", //"#71de6e",// BLACK
       outline: {
-        color: [128, 128, 128, 0.5],
-        width: "0.5px"
+        color: "", //[128, 128, 128, 0.5],
+        width: "", //"0.5PX"
       }
     }
   };
@@ -416,19 +418,17 @@ var bearreportRenderer = {
     "title": "<b>Roads</b>",
     "content": "{ROADNAME} <br><b><b>,{ROADNUM},{ADMIN *}, {SURFACE}"
     } 
-  }
 
    const RoadsRenderer = {
     type: "simple",
-    symbol: {
+    symbol: "",
       type: "simple-fill",
-      size: 6,
-      color: "#71de6e",
+      size: 5,
+      color: "FFAA00", //"#71de6e" (ORANGE)
       outline: {
-        color: [128, 128, 128, 0.5],
-        width: "0.5px"
+        color: "", //[128, 128, 128, 0.5],
+        width: "", //"0.5px"
       }
-    }
   };
 
   //Adding Roads feature layer (polygons)
@@ -708,15 +708,11 @@ var bearreportRenderer = {
           label: "Bear Report"  //"Incident Type"
         },
         {
-          name: "Date", //name: "Severity", might need to change this Andy change it to the fields that you want the user to edit
+          name: "Date", //name: "Severity", might need to change this Andy change it to the fields that you want the user to edit, date field
           label: "Date"//label: "Severity" might need to change this Andy
         },
         {
-          name: "Time",
-          label: "Time"
-        },
-        {
-          name: "Kind",
+          name: "Kind", //string
           label: "Kind"
         }],
       enabled: true, // default is true, set to false to disable editing functionality
@@ -726,7 +722,7 @@ var bearreportRenderer = {
     },
     {
       view: view,
-      layer: TrailHeadsLayer,
+      layer: trailHeadsLayer,
       enabled: false, // default is true, set to false to disable editing functionality
       addEnabled: false, // default is true, set to false to disable the ability to add a new feature
       updateEnabled: false, // default is true, set to false to disable the ability to edit an existing feature
@@ -826,31 +822,31 @@ var bearreportRenderer = {
     }
   });
 
-  //create node for content panel(remove not needed, could add the reservation.gov or the nps site here Andy)
-  // var node = domConstruct.create("div", {
-  //   className: "myPanel",
-  //   innerHTML: "<b>Resident Portal Information Guide</b><br>" +
-  //   '<a class="none" href="https://www.naperville.il.us/" target="_blank"><img class="NPD" src="img/logo.png" alt="NPD" style="width:111px;height:42px;"></a>' +
-  //   "<p>Thank you for utilizing the Naperville Leaf Collection Resident Portal! The portal offers residents the ability to locate and flag leaf collection incidents in an interactive map, allowing Leaf Crews to respond to concerns in a timely manner.</p></b>" +
-  //   '<a class="none" href="https://www.naperville.il.us/services/brush-leaf-and-yard-waste-collection/bulk-curbside-leaf-collection/" target="_blank"><img class="NPD" src="img/leaf4.jpg" alt="Prairie Crayfish" style="width:100px;height:60px;"></a></b>' +
-  //   '<a class="none" href="https://app.powerbigov.us/view?r=eyJrIjoiNzlhMDgyOWQtYTBjMi00MzgwLWFiM2QtYjg3YTBhZjVlYjU5IiwidCI6ImI5YTBmOTlmLTRiZGUtNGI4MS04YjIxLWZjZWRkNDU4ZmVjNSJ9" target="_blank"><img class="NPD" src="img/icons8-graph-report-64.png" alt="NPD" style="width:64px;height:64px;"></a>' +
-  //   "<p>In years past, the 3rd leaf collection cycle was neccessary in order to account for late leaf-fall or missed-service. However, this delayed the fleet's Winter conversion to salt trucks in December. <br> With your continued map contributions, we can make this an effective program that responds to your needs in real-time! </p></b>"
-  // });
+//   create node for content panel(remove not needed, could add the reservation.gov or the nps site here Andy)
+//   var node = domConstruct.create("div", {
+//     className: "myPanel",
+//     innerHTML: "<b>Resident Portal Information Guide</b><br>" +
+//     '<a class="none" href="https://www.naperville.il.us/" target="_blank"><img class="NPD" src="img/logo.png" alt="NPD" style="width:111px;height:42px;"></a>' +
+//     "<p>Thank you for utilizing the Naperville Leaf Collection Resident Portal! The portal offers residents the ability to locate and flag leaf collection incidents in an interactive map, allowing Leaf Crews to respond to concerns in a timely manner.</p></b>" +
+//     '<a class="none" href="https://www.naperville.il.us/services/brush-leaf-and-yard-waste-collection/bulk-curbside-leaf-collection/" target="_blank"><img class="NPD" src="img/leaf4.jpg" alt="Prairie Crayfish" style="width:100px;height:60px;"></a></b>' +
+//     '<a class="none" href="https://app.powerbigov.us/view?r=eyJrIjoiNzlhMDgyOWQtYTBjMi00MzgwLWFiM2QtYjg3YTBhZjVlYjU5IiwidCI6ImI5YTBmOTlmLTRiZGUtNGI4MS04YjIxLWZjZWRkNDU4ZmVjNSJ9" target="_blank"><img class="NPD" src="img/icons8-graph-report-64.png" alt="NPD" style="width:64px;height:64px;"></a>' +
+//     "<p>In years past, the 3rd leaf collection cycle was neccessary in order to account for late leaf-fall or missed-service. However, this delayed the fleet's Winter conversion to salt trucks in December. <br> With your continued map contributions, we can make this an effective program that responds to your needs in real-time! </p></b>"
+//   });
 
-  // const purpose = new Expand({
-  //  expandIconClass: "esri-icon-description",
-  //  view: view,
-  //  expanded: false,
-  //  expandTooltip: "Application Purpose",
-  //  content: node
-  // });
+//   const purpose = new Expand({
+//    expandIconClass: "esri-icon-description",
+//    view: view,
+//    expanded: false,
+//    expandTooltip: "Application Purpose",
+//    content: node
+//   });
 
-//don't know whether I should keep this or not --------
-  // watchUtils.whenTrueOnce(purpose, 'expanded', function(){
-  //  on(dom.byId("btnSubmit"), 'click', function(){
-  //    console.log("submit clicked");
-  //  });
-  // });
+// //don't keep
+//   watchUtils.whenTrueOnce(purpose, 'expanded', function(){
+//    on(dom.byId("btnSubmit"), 'click', function(){
+//      console.log("submit clicked");
+//    });
+//   });
 
  //creating basemap widget and setting its container to a div
   var basemapGallery = new BasemapGallery({
@@ -1041,7 +1037,7 @@ var bearreportRenderer = {
   // Add the home button to the top left corner of the view
   view.ui.add(homeBtn, "top-left");
 
-  //pop up for subdivision being searched - edit for Bear Reports ANDY
+  //pop up for Bear Reports being searched - edit for Bear Reports ANDY
   var bearReportsSearch = new FeatureLayer({ //subdivisionSearch
    url:
      "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Bear_Encounters/FeatureServer",//"https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
@@ -1053,13 +1049,13 @@ var bearreportRenderer = {
   });
 
 
-  //Search Widget Functionality Enabling Leaf Crews to Query Neighborhoods (keep search widget to allow the user to search bear reports.ANDY)
+  //Search Widget Functionality Enabling Users to Search Bear Reports (keep search widget to allow the user to search bear reports.ANDY)
   var searchWidget = new Search({
     view: view,
     allPlaceholder: "Enter Bear Report Type", // Enter Subdivison Name
     sources: [
       {
-        layer: bearReportSearch, //subdivisionSearch
+        layer: bearReportsSearch, //subdivisionSearch 
         searchFields: ["ReportType"], //"SUB_NAME"
         displayField: "ReportType", //"SUB_NAME"
         exactMatch: false,
@@ -1078,9 +1074,8 @@ var bearreportRenderer = {
     width: "50%"
   });
 
-  view.ui.add(purpose, "top-right");
+  //view.ui.add(purpose, "top-right");
 
   
 
 });
-
