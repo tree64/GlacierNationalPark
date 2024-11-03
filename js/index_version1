@@ -31,21 +31,7 @@
           <div class="mapSection" id="mapBox">
             <div id="viewDiv"></div>
           </div>
-
-          <!-- File input for uploading image attachments -->
-          <!-- <div class="row" id="attachmentInput">
-            <div class="col-sm">
-              <label for="imageFileInput">Attach a photo for the bear report:</label>
-              <input type="file" id="imageFileInput" accept="image/*" /> -->
-              
-              <!--Display image attachments added previously -->
-              <!-- <div id="attachmentsSection">
-                <h3>Attachments:</h3>
-                <div id="attachmentList"></div> -->
-              </div>
-            </div>
-          </div>
-        
+        </div>
       </div>
 
       <!-- scripts -->

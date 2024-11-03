@@ -91,15 +91,15 @@ require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer"], functio
   
     //add layers to map
     var map = new Map({
-        basemap: "Topographic", //basemap: "topo-vector",
+        basemap: "topo-vector", //basemap: "topo-vector",(Topographic) ("arcgis/topographic")
         layers: [layer]
     });
   
     var view = new MapView({
         container: "viewDiv",
         map: map,
-        center: [113.8061405, 48.6836922], //center: [-88.16719778104223, 41.740399844246234], // longitude, latitude, 
-        zoom: 7
+        center: [ -113.8061405, 48.6836922], //center: [-88.16719778104223, 41.740399844246234], // longitude, latitude, 
+        zoom: 9
     });
   
     //wait for layers to load and updates map to which layers are visible

@@ -28,7 +28,8 @@ require([
     "dojo/json",
     "esri/widgets/Legend"
 
-
+//This version works for the Bear Reports Application. Saved on 2024/10/19. You can reference this if all else fails. 
+//I copied it from the working Bear reports application.
     
  ], function(esriConfig, Map, MapView, FeatureLayer, Search, QueryTask, Query, FeatureTable, LayerList, watchUtils, Expand,
   BasemapGallery, domConstruct, dom, on, watchUtils, Editor, CreateWorkflow, UpdateWorkflow, Locate, FeatureForm, FeatureTemplates, domClass,  Popup, PopupTemplate, Home, Legend) {
@@ -79,60 +80,50 @@ require([
   //   popupTemplate: popupAddresspoints
   // });
   
-    //create Bear Report Icon (change to a new icon for general animal sightings)-------------------------
-//  const bearreportRenderer = { 
-//      "type": "simple",
-//      "symbol": {
-//       "type": "picture-marker",
-//       "url": "img/bear_2.jpg", 
-//       "width": "24px",
-//       "height": "24px"   
-//      } 
-//     }
- 
-const animalsightingRenderer = {
-    "type": "simple",
-    "symbol": {
+    //create Bear Report Icon
+ const bearreportRenderer = {
+     "type": "simple",
+     "symbol": {
       "type": "picture-marker",
-      "url": "image/letter-a-black-24.png", 
+      "url": "img/bear_2.jpg", 
       "width": "24px",
-      "height": "24px"
+      "height": "24px"   
+     } 
     }
- }
-         
-//Define a pop-up for Bear Reports(change to animal sightings)-------------------------
-//  const popupBearReport = {
-//      "title": "<b>Bear Reports<b>",
-//      "content": "{ReportType}<br><b></b> {Date}, {Kind}" //KindofBear
-// }    
 
-//Define a pop-up for Animal Sightings)-------------------------
-const popupAnimalSighting = {
-  "title": "<b>Animal Sighting<b>",
-  "content": "{SPECIES}<br><b></b> {TIME_DATE}, {LOCATION}, {USERNAME}" //Species of Animal
+         
+//Define a pop-up for Bear Reports
+ const popupBearReport = {
+     "title": "<b>Bear Reports<b>",
+     "content": "{ReportType}<br><b></b> {Date}, {Kind}" //KindofBear
 }    
 
+//Bear Report feature layer (points), 
+  const bearReportLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Bear_Encounters/FeatureServer",
+    renderer: bearreportRenderer,
+    outFields: ["ReportType","Date","Kind"], //"KindofBear"
+    popupTemplate: popupBearReport
+  });
+
+  map.add(bearReportLayer);
 
 
-//Bear Report feature layer (points) (change to aniamal sightings)----------------------
-  // const bearReportLayer = new FeatureLayer({
-  //   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Bear_Encounters/FeatureServer",
-  //   renderer: bearreportRenderer,
-  //   outFields: ["ReportType","Date","Kind"], //"KindofBear"
-  //   popupTemplate: popupBearReport
-  // });
+//     // Define a pop-up for Incidents
+  //     const popupIncidents = {
+  //       "title": "<b>Incident<b>",
+  //       "content": "<b>Severity:</b> {Severity}<br><b>Type:</b> {IncidentType}"
+  //     }
 
-  // map.add(bearReportLayer);
+  //   const incidentLayer = new FeatureLayer({
+  //       url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/0",
+  //       renderer: incidentRenderer,
+  //       outFields: ["OBJECTID","IncidentType","Severity"],
+  //       popupTemplate: popupIncidents
+  //     });
 
-//Animal Sighting feature layer (points)----------------------
-const animalSightingLayer = new FeatureLayer({
-  url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Animal_Sightings_1/FeatureServer", 
-  renderer: animalsightingRenderer,
-  outFields: ["SPECIES","DATE_TIME","LOCATION_DESC", "USERNAME"], //"Species of Animal"
-  popupTemplate: popupAnimalSighting
-});
-
-map.add(animalSightingLayer);
+  // incidentLayer.visible = true;
+  // map.add(incidentLayer);
 
  //create TrailHeads Icon
   const trailHeadsRenderer = {
@@ -294,6 +285,81 @@ map.add(animalSightingLayer);
 
   map.add(ParkingLayer);
 
+  // renderer.visualVariables = [
+  //   {
+  //     type: "size",
+  //     valueExpression: "$view.scale",
+  //     stops: [
+  //       // view scales larger than 1:1,155,581
+  //       // will have a symbol size of 7.5 pts
+  //       { size: 7.5, value: 1155581 },
+  //       { size: 6, value: 9244648 },
+  //       { size: 3, value: 73957190 },
+  //       // view scales smaller than 1:591,657,527
+  //       // will have a symbol size of 1.5 pts
+  //       { size: 1.5, value: 591657527 }
+  //     ]
+  //   }
+  // ];
+  
+  // //adjusts the size of the icons by map scale
+  // const sizeVV = {
+  //   type: "size",
+
+  //   valueExpression: "$view.scale",
+
+  //   stops: [
+  //     { size: 9, value: 1155581 },
+  //     { size: 6, value: 9244648 },
+  //     { size: 3, value: 73957190 },
+  //     { size: 1.5, value: 591657527 }
+  //   ]
+  // };
+
+  // generates a new renderer with a scale-dependent
+// size visual variable to vary icon size by scale
+//locationRendererCreator.createRenderer({
+  //layer: layer,
+  //view: view,
+  //sizeOptimizationEnabled: sizeOptimizationEnabled
+//}).then((rendererResponse) => {
+  // the renderer contains a size variable with stops
+  // mapping icon sizes to scale values
+  //layer.renderer = rendererResponse.renderer;
+//}).catch((error) => {
+  //console.error(error);
+//});
+
+// icon sizes will linearly change
+// depending on the view.scale
+// This variable was generated using the previous snippet
+//const sizeVariable = {
+  //type: "sizeInfo",
+  //valueExpression: "$view.scale",
+  //stops: [
+    //{
+      //size: 7.5,
+      //value: 201000.108577
+    //},
+    //{
+      //size: 6,
+      //value: 301000.868618
+    //},
+    //{
+      //size: 3,
+      //value: 450000.948944
+    //},
+    //{
+      //size: 1.5,
+      //value: 577000.591555
+    //}
+  //]
+//};
+
+//const renderer = layer.renderer.clone();
+//renderer.visualVariables.push(sizeVariable);
+//layer.renderer = renderer;
+
   //create Campgrounds Icon
     const CampgroundsRenderer = {
     "type": "simple", //autocasts as new SimpleRenderer()
@@ -306,6 +372,73 @@ map.add(animalSightingLayer);
       },
     };
     
+    
+    
+    // const treesRenderer = {
+    //   type: "simple", // autocasts as new SimpleRenderer() from Mike 
+    //   symbol: defaultSym,
+    //   visualVariables: [
+    //     {
+    //       type: "size",
+    //       field: "DIAMETER",
+    //       normalizationField: null,
+    //       legendOptions: {
+    //         title: "Canopy Diameter"
+    //       },
+    //       stops: [
+    //         {
+    //           value: 15,
+    //           size: 5,
+    //           label: "15 ft"
+    //         },
+    //         {
+    //           value: 30,
+    //           size: 10,
+    //           label: "30 ft"
+    //         },
+    //         {
+    //           value: 45,
+    //           size: 15,
+    //           label: "45 ft"
+    //         },
+    //         {
+    //           value: 60,
+    //           size: 20,
+    //           label: ">60 ft"
+    //         }
+    //       ]
+    //     }
+    //   ]
+    // };
+    
+    // renderer.visualVariables = [
+    //   {
+    //     type: "size", //points 
+    //     valueExpression: "$view.scale",
+    //     stops: [
+    //       {
+    //         size: 7.5,
+    //         value: 1155581
+    //       },
+    //       {
+    //         size: 6,
+    //         value: 9244648
+    //       },
+    //       {
+    //         size: 3,
+    //         value: 73957190
+    //       },
+    //       {
+    //         size: 1.5,
+    //         value: 591657527
+    //       }
+    //     ]
+    //   }
+    // ];
+    
+ 
+
+
     //Define a pop-up for Campgrounds
     const popupCampgrounds = {
      "title": "<b>Campgrounds<b>",
@@ -322,8 +455,8 @@ map.add(animalSightingLayer);
 
   map.add(CampgroundsLayer);
     
-  // Define a pop-up for Trails -----------see about adding links to all trails for more information. 
-   const popupTrails = { 
+  // Define a pop-up for Trails
+   const popupTrails = {
     "title": "<b>Trails</b>",
     "content": "{NAME} <br><b><b>,{AREA},{Miles}, {DESC_SEG}, {TRAILROUTE}"
    }
@@ -333,7 +466,8 @@ map.add(animalSightingLayer);
     symbol: {
       color: "#FF0000",
       type: "simple-line",
-      style: "solid",  
+      style: "solid",
+      
     }
   };
 
@@ -359,7 +493,8 @@ map.add(animalSightingLayer);
     symbol: {
       color: "#000000", 
       type: "simple-line",
-      style: "solid" 
+      style: "solid"
+      
     }
   };
 
@@ -387,6 +522,7 @@ map.add(animalSightingLayer);
       color:"#FFAA00",
       type: "simple-line",
       style: "solid",
+      
       }
   };
 
@@ -420,64 +556,32 @@ map.add(animalSightingLayer);
     }
   });
   
-//create editor panel (this is where you add the various layers that you will display)(change to animal sightings, add picture attachment)------
-  // const editor = new Editor({
-  //   view: view,
-  //   label: "Bear Report", 
-  //   allowedWorkflows: ["create", "update"],
-  //   layerInfos: [{
-  //     view: view,
-  //     layer: bearReportLayer,
-  //     fieldConfig: [
-  //       {
-  //         name: "ReportType", 
-  //         label: "Report Type"  
-  //       },
-  //       {
-  //         name: "Date",
-  //         label: "Date"
-  //       },
-  //       {
-  //         name: "Kind",
-  //         label: "Kind"
-  //       }],
-  //     enabled: true, // default is true, set to false to disable editing functionality
-  //     addEnabled: true, // default is true, set to false to disable the ability to add a new feature
-  //     updateEnabled: true, // default is true, set to false to disable the ability to edit an existing feature
-  //     deleteEnabled: true // default is true, set to false to disable the ability to delete features
-  //   },
-    //create editor panel (this is where you add the various layers that you will display)(change to animal sightings, add picture attachment)------
+//create editor panel (this is where you add the various layers that you will display)
   const editor = new Editor({
     view: view,
-    label: "Animal Sighting", 
-    allowedWorkflows: ["create", "update"], 
+    label: "Bear Report", 
+    allowedWorkflows: ["create", "update"],
     layerInfos: [{
       view: view,
-      layer: animalSightingLayer,
+      layer: bearReportLayer,
       fieldConfig: [
         {
-          name: "SPECIES", 
-          label: "Species"  
+          name: "ReportType", 
+          label: "Report Type"  
         },
         {
-          name: "TIME_DATE",
-          label: "Date and Time"
+          name: "Date",
+          label: "Date"
         },
         {
-          name: "LOCATION_DESC",
-          label: "Location"
-        },
-        { 
-          name: "USERNAME",
-          label: "Username"
-        }
-          ],
+          name: "Kind",
+          label: "Kind"
+        }],
       enabled: true, // default is true, set to false to disable editing functionality
       addEnabled: true, // default is true, set to false to disable the ability to add a new feature
       updateEnabled: true, // default is true, set to false to disable the ability to edit an existing feature
       deleteEnabled: true // default is true, set to false to disable the ability to delete features
     },
-    
     {
       view: view,
       layer: trailHeadsLayer,
@@ -561,91 +665,27 @@ map.add(animalSightingLayer);
    ]
   });
 
-  //Editor Widget Functionality that allows for user submitted data (change to animal sightings, and include picture attachment)----------------------------
+  //Editor Widget Functionality that allows for user submitted data 
   editor.viewModel.watch('state', function(state){
     if(state === 'ready'){
       setTimeout(function(){
-        document.getElementsByClassName('esri-editor__title esri-heading')[0].innerHTML = 'Animal Sighting'; // 'Bear Reports'
+        document.getElementsByClassName('esri-editor__title esri-heading')[0].innerHTML = 'Bear Reports';
         var actions = document.getElementsByClassName("esri-editor__feature-list-name");
         Array.from(actions).forEach(function(ele){
           if(ele.innerHTML==='Add feature'){
-            ele.innerHTML = 'Create New Animal Sighting'; //'Create New Bear Report'
+            ele.innerHTML = 'Create New Bear Report'; 
           }
       	  if(ele.innerHTML==='Edit feature'){
-            ele.innerHTML = 'Modify or Delete Existing Animal Sighting'; //'Modify or Delete Existing Bear Reports'
+            ele.innerHTML = 'Modify or Delete Existing Bear Report';
           
           }
         });
       }, 50);
     }
   });
-// Listen to the `applyEdits` event (this section of code adds the image to the feature service)
-// editor.viewModel.on("applyEdits", function(event) {
-//   var objectId = event.addFeatureResults[0].objectId; // Get objectId of added feature
-//   uploadAttachment(objectId); // Call the attachment upload function
-// });
 
-// Function to upload attachment to a feature (This appears at the bottum of the map (10/25/2024))
-// function uploadAttachment(objectId) {
-//   var fileInput = document.getElementById("imageFileInput");
-//   var file = fileInput.files[0]; // Get the selected file
-
-//   if (file) {
-//     featureLayer.addAttachment(objectId, file).then(function(result) {
-//       console.log("Attachment uploaded:", result);
-//     }).catch(function(error) {
-//       console.error("Error uploading attachment:", error);
-//     });
-//   } else {
-//     console.log("No file selected for attachment.");
-//   }
-// }
-//});
-
-// require(["esri/layers/FeatureLayer"], function(FeatureLayer) {
-//   // Feature Layer with attachments enabled
-//   var featureLayer = new FeatureLayer({
-//     url: "https://your-feature-service-url/FeatureServer/0"
-//   });
-
-  // Function to fetch and display attachments
-  // function displayAttachments(objectId) {
-  //   featureLayer.queryAttachments({
-  //     objectIds: [objectId]
-  //   }).then(function(attachmentResults) {
-  //     var attachmentList = document.getElementById("attachmentList");
-  //     attachmentList.innerHTML = ""; // Clear any previous attachments
-
-  //     if (attachmentResults[objectId] && attachmentResults[objectId].length > 0) {
-  //       attachmentResults[objectId].forEach(function(attachment) {
-  //         // Create an image element for each attachment
-  //         var img = document.createElement("img");
-  //         img.src = featureLayer.url + "/attachments/" + objectId + "/" + attachment.id;
-  //         img.alt = "Animal Sighting Attachment";
-  //         img.style.maxWidth = "200px"; // Adjust image size
-
-  //         // Append the image to the attachment list
-  //         attachmentList.appendChild(img);
-  //       });
-  //     } else {
-  //       attachmentList.innerHTML = "No attachments found for this feature.";
-  //     }
-  //   }).catch(function(error) {
-  //     console.error("Error fetching attachments:", error);
-  //   });
-  // }
-
-  // // Example usage: when a feature is selected, pass its objectId to displayAttachments
-  // var objectId = 1; // Replace with the actual objectId of the selected feature
-  // displayAttachments(objectId);
-//});
-
-
-
-
-  // build in more links for animal information------------------------------------- Add one widget that creates a drop down for multiple sites if possible.
-//   create node for content panel(remove not needed, could add the reservation.gov or the nps site here, change the "Every year..." for animal sightings  Andy)
-  var node = domConstruct. create("div", {
+//   create node for content panel(remove not needed, could add the reservation.gov or the nps site here Andy)
+  var node = domConstruct.create("div", {
     className: "myPanel",
     innerHTML: "<b>Resident Portal Information Guide</b><br>" +
     '<a class="none" href="https://www.nps.gov/glac/planyourvisit/bears.htm" target="_blank"></a>' + //<img class="NPS" src="img/nps_logo.edit_2.jpg" alt="NPS" style="width:111px;height:42px;">
@@ -740,29 +780,17 @@ map.add(animalSightingLayer);
          open: true
        };
      }
-    //  if (item.title === "bearReportsLayer") { 
-    //    // open the list item in the LayerList
-    //    item.open = true;
-    //    // change the title to something more descriptive
-    //    item.title = "Bear Reports"; 
-    //    //add legend
-    //    item.panel = {
-    //      content: "legend",
-    //      open: true
-    //    };
-    //  }
-     if (item.title === "animalSightingLayer") { //changes for animal sightings
-      // open the list item in the LayerList
-      item.open = true;
-      // change the title to something more descriptive
-      item.title = "Animal Sighting"; 
-      //add legend
-      item.panel = {
-        content: "legend",
-        open: true
-      };
-    }
-     
+     if (item.title === "bearReportsLayer") { 
+       // open the list item in the LayerList
+       item.open = true;
+       // change the title to something more descriptive
+       item.title = "Bear Reports"; 
+       //add legend
+       item.panel = {
+         content: "legend",
+         open: true
+       };
+     }
      if (item.title === "RangerStationLayer") { 
        // open the list item in the LayerList
        item.open = true;
@@ -855,21 +883,12 @@ map.add(animalSightingLayer);
   view.ui.add(layerListExpand, "top-left");
 
   //adds expand button to map TRY TO CHANGE ICON AND WORDS OF EXPAND BOX
-  // editorExpand = new Expand({
-  //  expandIconClass: "esri-icon-visible",  // see https://developers.arcgis.com/javascript/latest/guide/esri-icon-font/
-  //  // expandTooltip: "Expand LayerList", // optional, defaults to "Expand" for English locale
-  //  view: view,
-  //  content: editor,
-  //  expandTooltip: "Bear Reports"  
-  // });
- 
-  //adds expand button to map TRY TO CHANGE ICON AND WORDS OF EXPAND BOX
   editorExpand = new Expand({
    expandIconClass: "esri-icon-visible",  // see https://developers.arcgis.com/javascript/latest/guide/esri-icon-font/
- expandTooltip: "Expand LayerList", // optional, defaults to "Expand" for English locale
+   // expandTooltip: "Expand LayerList", // optional, defaults to "Expand" for English locale
    view: view,
    content: editor,
-   expandTooltip: "Animal Sighting"  
+   expandTooltip: "Bear Reports"  
   });
 
   view.ui.add(editorExpand, "top-left");
@@ -880,61 +899,31 @@ map.add(animalSightingLayer);
   // Add the home button to the top left corner of the view
   view.ui.add(homeBtn, "top-left");
 
-  // Add the animal information button to the map (try for the left corner of the view) 
-  // view.ui.add(information, "top-left");
+  //pop up for Bear Reports being searched
+  var bearReportsSearch = new FeatureLayer({ 
+   url:
+     "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Bear_Encounters/FeatureServer",//"https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
+   popupTemplate: {
+     // autocasts as new PopupTemplate()
+     title: "Bear Reports: {ReportType} ", //"Bear Reports: {SUB_NAME} </br>Trees: {TREE_TOTAL} </br>Total Storm Drains: {STORM_TOTAL}",
+     overwriteActions: true
+   }
+  });
 
 
-  //pop up for Bear Reports being searched (change to animal sightings, see if you can search by username including by animal)
-  // var bearReportsSearch = new FeatureLayer({ 
-  //  url:
-  //    "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Bear_Encounters/FeatureServer",//"https://services.arcgis.com/HRPe58bUyBqyyiCt/ArcGIS/rest/services/GEOG777PROJ2_Layers/FeatureServer/5",
-  //  popupTemplate: {
-  //    // autocasts as new PopupTemplate()
-  //    title: "Bear Reports: {ReportType} ", //"Bear Reports: {SUB_NAME} </br>Trees: {TREE_TOTAL} </br>Total Storm Drains: {STORM_TOTAL}",
-  //    overwriteActions: true
-  //  }
-  // });
-//pop up for Animal Sightings being searched (change to animal sightings, see if you can search by username including by animal)
-var animalSightingSearch = new FeatureLayer({ 
-  url:
-    "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Animal_Sightings_1/FeatureServer",
-  popupTemplate: {
-    // autocasts as new PopupTemplate()
-    title: "Animal Sighting: {Species} ", //"Bear Reports: {SUB_NAME} </br>Trees: {TREE_TOTAL} </br>Total Storm Drains: {STORM_TOTAL}",
-    overwriteActions: true
-  }
- });
-
-  //Search Widget Functionality Enabling Users to Search Bear Reports (change to animal sightings, see if you can add a search for username including animal name)
-  // var searchWidget = new Search({
-  //   view: view,
-  //   allPlaceholder: "Enter Bear Report Type", 
-  //   sources: [
-  //     {
-  //       layer: bearReportsSearch, 
-  //       searchFields: ["ReportType"], 
-  //       displayField: "ReportType", 
-  //       exactMatch: false,
-  //       outFields: ["ReportType", "Date", "Kind"], 
-  //       name: "Bear Reports",
-  //       placeholder: "Bear Report Search" 
-  //     }
-  //   ],
-  //   includeDefaultSources: false
-
-  // });
+  //Search Widget Functionality Enabling Users to Search Bear Reports 
   var searchWidget = new Search({
     view: view,
-    allPlaceholder: "Enter Animal Species", 
+    allPlaceholder: "Enter Bear Report Type", 
     sources: [
       {
-        layer: animalSightingSearch, 
-        searchFields: ["SPECIES"], 
-        displayField: "SPECIES", 
+        layer: bearReportsSearch, 
+        searchFields: ["ReportType"], 
+        displayField: "ReportType", 
         exactMatch: false,
-        outFields: ["SPECIES", "TIME_DATE", "LOCATION_DESC", "USERNAME"], //Photos and files, see if you can search by username too. 
-        name: "animalSighting",
-        placeholder: "Animal Sightings Search" 
+        outFields: ["ReportType", "Date", "Kind"], 
+        name: "Bear Reports",
+        placeholder: "Bear Report Search" 
       }
     ],
     includeDefaultSources: false
